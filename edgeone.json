@@ -3,5 +3,5 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "docs/.vitepress/dist",
-  "nodeVersion": "22.21.1"
+  "nodeVersion": "20.18.0"
 }
