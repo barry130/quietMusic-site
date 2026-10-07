@@ -5,7 +5,7 @@
 
 ::: tip 先跑通模板
 配套模板
-[`examples/hello-play-pack.js`](https://cnb.cool/canace/qt-sources/-/blob/main/examples/hello-play-pack.js)
+[`examples/hello-play-pack.js`](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/examples/hello-play-pack.js)
 —— 手写免构建、可直接安装。装上后任何歌都会播放同一段 CC0 演示音频，
 **听到声音就说明整条链路走通了**。
 :::
@@ -39,7 +39,8 @@
 官方播放包里内置了一个 **LX 自定义源脚本宿主**，这类脚本**无需改动即可被装载**，
 并且在 Android 与 Windows 两端行为一致。
 
-宿主提供的兼容面（都写在 `qt-sources/src/schemes/lx-host/` 里）：
+宿主提供的兼容面（实现位于私有构建仓的 `src/schemes/lx-host/`，
+公开的类型声明见 [`qt-sources-sdk` 的 `docs/HOST-API.md`](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/docs/HOST-API.md)）：
 
 | 提供物 | 说明 |
 |---|---|

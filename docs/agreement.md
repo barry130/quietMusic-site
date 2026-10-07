@@ -37,7 +37,8 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 |---|---|---|
 | qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/main/LICENSE-SUPPLEMENTARY.md) |
 | qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-pc/-/blob/main/LICENSE-SUPPLEMENTARY.md) |
-| qt-sources | 音源包工程 | 仅供学习与技术交流使用，**未单独授权** |
+| qt-sources | 音源实现与打包工程 | **私有仓库，不公开分发**，未附许可证文件 |
+| qt-sources-sdk | 音源包开发的公开面：类型契约、宿主 API、作者指南、示例包 | [MIT](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/LICENSE) |
 
 仓库入口：[CNB](https://cnb.cool/canace)，
 完整列表与反馈渠道见[反馈与贡献](/feedback)。
@@ -45,8 +46,10 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 两个客户端仓库以 **Apache-2.0** 发布，并各自附带一份**补充条款**（音源包与内容边界）。
 补充条款与 Apache-2.0 共同生效，**如二者冲突，以补充条款为准**。
 
-音源包工程（`qt-sources`）与上面两个客户端仓库不同：它**没有附许可证文件**，
-仓库定位是学习与技术交流，不构成任何形式的授权或商用许可。
+音源实现工程 `qt-sources` 因内含第三方音乐源脚本原文与各平台取链实现，**不对外公开**；
+它**没有许可证文件**，也不构成任何形式的授权或商用许可。
+对外公开的相关部分是 `qt-sources-sdk`（MIT）：只有类型契约、宿主 API 声明、
+作者指南与示例包，**不含任何取链实现与第三方脚本**。
 
 无论哪个仓库，都请注意：
 
@@ -68,6 +71,9 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 客户端仓库里确实**不包含** `source-bundle.js` / `chain.json` 及其任何构建产物，
 也**不包含任何音源接口实现**。仓库里只有：播放器与界面、原生插件（音频内核 /
 音源包执行引擎 / 悬浮窗歌词等），以及执行「使用者提供的脚本」所需的通用能力。
+
+构建官方包所用的工程 `qt-sources` **是私有仓库，不对外公开分发**，
+因此第三方脚本原文与取链实现都不在任何可公开获取的仓库中。
 
 ---
 

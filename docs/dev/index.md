@@ -4,15 +4,21 @@
 
 ---
 
-## 三个仓库与边界
+## 仓库与边界
 
 代码托管在 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
+三个客户端/构建仓里，`qt-sources` 转为私有，另外新增一个公开的接口仓。
 
 | 仓库 | 面向平台 | 技术栈 | 产物 | 仓库 |
 |---|---|---|---|---|
 | **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
 | **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources** | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
+| **qt-sources**（私有） | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | 私有，不对外公开 |
+| **qt-sources-sdk** | 平台无关 | 纯类型 + 文档，MIT | `contract.ts`、`host-api.ts`、作者指南、示例包 | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
+
+`qt-sources` 转私有是因为它打包时会内嵌第三方音乐源脚本原文与各平台取链实现；
+对外公开的是 `qt-sources-sdk`——播放包作者需要的类型契约、宿主 API、
+[作者指南](/dev/pack-authoring)与示例包。
 
 关键的架构约定：**音源实现只存在于 qt-sources**。
 两端都不内置任何第三方取链逻辑，只在运行时装载音源包。
@@ -126,6 +132,13 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 | `pnpm check:bodies` | 单独跑脚本体沙箱守卫 |
 | `pnpm smoke:bundle` / `pnpm smoke:entries` | 产物冒烟（bundle 与入口自注册各一项） |
 | `pnpm verify:expr` | 表达式校验脚本 |
+| `pnpm check:sdk` | 校验 `src/contract.ts`、作者指南与示例包与公开仓 `qt-sources-sdk` 逐字一致（漂移即失败） |
+
+### qt-sources-sdk
+
+纯类型 + 文档的公开仓（MIT），`package.json` 为 private、不发布 npm。
+它只被构建仓单向引用：构建仓里同名文件是它的副本，`pnpm check:sdk` 保证两者不漂移；
+需要改公开面时改 SDK 仓，再回构建仓 `pnpm sync:sdk` 回灌副本。
 
 ### qt-uniappx
 

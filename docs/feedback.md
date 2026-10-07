@@ -17,8 +17,10 @@ Issue 与 Pull Request 都在这里提。
 |---|---|
 | **qt-uniappx**（Android / iOS 客户端） | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
 | **qt-pc**（Windows 桌面端） | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources**（音源包工程） | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
+| **qt-sources-sdk**（音源包公开面：契约 / 宿主 API / 指南 / 示例） | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
 | **quietMusic-site**（本站） | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) |
+
+音源实现工程 `qt-sources` 为私有仓库，不接受外部 Issue。
 
 ---
 
@@ -31,7 +33,7 @@ Issue 与 Pull Request 都在这里提。
 |---|---|
 | **qt-uniappx** | [Issues](https://cnb.cool/canace/qt-uniappx/-/issues) |
 | **qt-pc** | [Issues](https://cnb.cool/canace/qt-pc/-/issues) |
-| **qt-sources** | [Issues](https://cnb.cool/canace/qt-sources/-/issues) |
+| **qt-sources-sdk** | [Issues](https://cnb.cool/canace/qt-sources-sdk/-/issues) |
 | **quietMusic-site** | [Issues](https://cnb.cool/canace/quietMusic-site/-/issues) |
 
 不知道该提到哪个仓库？**Android 端的问题 → qt-uniappx，Windows 端的问题 → qt-pc**，
@@ -70,7 +72,7 @@ Issue 与 Pull Request 都在这里提。
 |---|---|
 | **qt-uniappx** | [Pull requests](https://cnb.cool/canace/qt-uniappx/-/pulls) |
 | **qt-pc** | [Pull requests](https://cnb.cool/canace/qt-pc/-/pulls) |
-| **qt-sources** | [Pull requests](https://cnb.cool/canace/qt-sources/-/pulls) |
+| **qt-sources-sdk** | [Pull requests](https://cnb.cool/canace/qt-sources-sdk/-/pulls) |
 | **quietMusic-site** | [Pull requests](https://cnb.cool/canace/quietMusic-site/-/pulls) |
 
 ### 动手之前
