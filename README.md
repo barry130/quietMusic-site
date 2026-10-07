@@ -3,16 +3,14 @@
 轻听（QuietMusic）官方站点源码 —— 功能介绍、下载安装、开发指南、问题答疑、
 用户协议与隐私政策。
 
-基于 [VitePress](https://vitepress.dev/)，通过 GitHub Actions 自动部署到
-GitHub Pages。
-
-线上地址：https://barry130.github.io/qt-site/
+基于 [VitePress](https://vitepress.dev/)，产物上传到
+[EdgeOne Pages](https://pages.edgeone.ai/)（免费档）。
 
 ## 本地预览
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173/qt-site/
+npm run dev        # http://localhost:5173/
 ```
 
 ## 构建
@@ -46,9 +44,45 @@ docs/.vitepress/config.mts      站点配置
 
 ## 部署
 
-推送到 `main` 分支即触发 `.github/workflows/deploy.yml`：构建 → 上传 Pages
-产物 → 部署。首次需要在仓库 Settings → Pages 里把 Source 设为
-**GitHub Actions**。
+站点部署在 **EdgeOne Pages** 免费档（免费计划官方承诺长期可用），直接用 CLI
+上传构建产物，不走 Git 托管。base 为 `/`，挂在默认域名根目录；将来若改绑
+子路径（如 GitHub Pages 的 `/qt-site/`），需要同步改
+`docs/.vitepress/config.mts` 里的 `base`。
+
+### 首次配置
+
+1. 打开 [Makers 控制台](https://console.cloud.tencent.com/edgeone/pages) →
+   **API Token** → Create API Token，生成一个 token。
+2. 复制环境变量模板并填入：
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   ```ini
+   EDGEONE_PROJECT_NAME=qt-site      # 首次部署会创建同名项目，之后同名即更新
+   EDGEONE_PAGES_API_TOKEN=<你的 token>
+   ```
+
+   `.env.local` 已被 `.gitignore` 忽略，token 不会入库。
+
+### 发布
+
+```bash
+npm run build
+npm run deploy            # 生产环境
+npm run deploy:preview    # 预发环境（先预览再上生产）
+```
+
+`scripts/deploy.mjs` 只做三件事：读 `.env.local`、校验 `index.html` 已生成、
+调用项目内的 `edgeone` CLI 执行 `makers deploy docs/.vitepress/dist`。缺少
+token 或未构建时会直接报错退出，不会带着残缺产物上生产。
+
+### 自定义域名（可选）
+
+默认域名形如 `*.edgeone.app`，免备案即可访问。若在中国站绑定自有域名，
+按合规要求该域名需完成 ICP 备案；绑定后在控制台申请免费证书并添加 CNAME
+解析即可。
 
 ## 相关仓库
 

@@ -4,3 +4,8 @@ docs/.vitepress/dist/
 .vitepress/dist/
 .DS_Store
 *.log
+
+# 本地部署凭据：绝不入库
+.env
+.env.local
+.env.*.local

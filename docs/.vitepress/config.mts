@@ -1,8 +1,9 @@
 import { defineConfig } from "vitepress";
 
-// 站点基路径：GitHub Pages 项目站点挂在 https://barry130.github.io/qt-site/
-// 若将来绑定自定义域（如 qt.canace.cn），把 base 改成 "/"。
-const base = "/qt-site/";
+// 站点基路径：站点的输出目录就是根，部署在域名根目录（如 EdgeOne Pages 的
+// *.edgeone.app 默认域名，或绑定的自定义域）。
+// 若将来要挂在某个子路径下（如 GitHub Pages 项目站点 /qt-site/），把 base 改成对应前缀。
+const base = "/";
 
 export default defineConfig({
   base,
@@ -14,7 +15,7 @@ export default defineConfig({
   lastUpdated: true,
 
   head: [
-    ["link", { rel: "icon", type: "image/png", href: "/qt-site/favicon.png" }],
+    ["link", { rel: "icon", type: "image/png", href: "/favicon.png" }],
     ["meta", { name: "theme-color", content: "#31c27c" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:title", content: "轻听 QuietMusic" }],

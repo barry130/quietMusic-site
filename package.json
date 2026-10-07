@@ -7,9 +7,12 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "deploy": "node scripts/deploy.mjs",
+    "deploy:preview": "node scripts/deploy.mjs --env preview"
   },
   "devDependencies": {
+    "edgeone": "^1.6.41",
     "vitepress": "1.6.4"
   }
 }
