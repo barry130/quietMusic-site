@@ -1,8 +1,9 @@
 # qt-uniappx（Android 移动端）
 
 [UniAppX](https://uniapp.dcloud.net.cn/uni-app-x/)（UVue + UTS + Vapor 编译模式）写的音乐应用，
-一套代码同时出 Android 与 iOS 包。仓库 <https://github.com/barry130/qt-uniappx>，包名
-`com.qt.app`，appid `__UNI__7AC1B12`，定位是**本地音乐播放器**（在线聚合为可选增强）。
+一套代码同时出 Android 与 iOS 包。仓库 <https://github.com/barry130/qt-uniappx>
+（CNB 镜像 <https://cnb.cool/canace/qt-uniappx>），包名
+`com.qt.app`，appid `__UNI__7AC1B12`。
 
 ## 环境要求
 
@@ -71,7 +72,7 @@ manifest.json / pages.json   应用与路由配置
 
 ### 版本号
 
-`manifest.json` 是唯一真源：`versionName` `3.0.7`、`versionCode` `"307"`（字符串）。运行时由
+`manifest.json` 是唯一真源：`versionName` + `versionCode`（字符串）。运行时由
 `services/app-version.ts` 从 `uni.getAppBaseInfo()` 读回，代码里不维护第二份常量——**发版只改
 manifest**。同一文件还开着 `uni-app-x.vapor: true`、`vapor-render-target: "bytecode"`、
 `styleIsolationVersion: "2"`；打包相关是 `abiFilters ["arm64-v8a"]`、`minSdkVersion "26"`、
@@ -110,7 +111,7 @@ ut / app_version）与反馈提交（`sys_feedback` 的 platform / device / os�
 绕过 `http.ts` 直接用 `uni.request` 的调用点（`services/source-update.uts`、
 `uni_modules/qt-stat` 上报器）必须自己调 `mergeClientHeaders()`；反过来，第三方直链与音源加速
 探测**不要**带这些头。应用自身升级在 `services/upgrade.ts`：`checkAppUpdate` /
-`checkOfficialVersion`（非官方版本提示后 3 秒退出）/ `isGithub` 加速探测 / `md5` 校验；
+`checkOfficialVersion`（校验发行来源）/ `isGithub` 加速探测 / `md5` 校验；
 `channel` 分 `stable|beta`，`updateType` `1` 弹窗、`2` 红点、`3` 无提示。
 
 ## UVue 开发约束
@@ -167,6 +168,8 @@ Android 端在 `qt-js-engine`（系统 WebView 的 V8）里执行音源包，契
 - 官方包身份靠 ed25519 尾部签名块（`__QT_SIGN__`）+ 内置公钥硬校验，与安装渠道无关
 - 更新发现走「各包自述 `updateUrl` 探测 + astral manifest」两条路，按包独立节流 4 小时；**只提
   示不安装**：确认后下载 → 校验头 → 替换 → 生效，失败回滚 `.prev`
+- 播放包里内含 **LX 自定义源脚本宿主**（实现在 `qt-sources`，两端共用），
+  符合该协议的脚本无需改动即可装载，安卓侧与 Windows 侧跑同一份脚本、行为一致
 
 启动时 `App.uvue` 的 `onLaunch` 先 `applyLegacyInsets()`（三星 One UI 首屏竞态）、
 `refreshQtLayout(720)`、恢复各 store，再 `prewarmSourceEngine()` 装包（失败静默），3 秒后探测更新。

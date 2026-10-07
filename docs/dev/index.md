@@ -6,11 +6,13 @@
 
 ## 三个仓库与边界
 
-| 仓库 | 面向平台 | 技术栈 | 产物 |
-|---|---|---|---|
-| [qt-uniappx](https://github.com/barry130/qt-uniappx) | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 |
-| [qt-pc](https://github.com/barry130/qt-pc) | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` |
-| [qt-sources](https://github.com/barry130/qt-sources) | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` |
+代码托管在两个平台，内容一致、同步推送：**GitHub** 与 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
+
+| 仓库 | 面向平台 | 技术栈 | 产物 | GitHub | CNB |
+|---|---|---|---|---|---|
+| **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [仓库](https://github.com/barry130/qt-uniappx) | [仓库](https://cnb.cool/canace/qt-uniappx) |
+| **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [仓库](https://github.com/barry130/qt-pc) | [仓库](https://cnb.cool/canace/qt-pc) |
+| **qt-sources** | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | [仓库](https://github.com/barry130/qt-sources) | [仓库](https://cnb.cool/canace/qt-sources) |
 
 关键的架构约定：**音源实现只存在于 qt-sources**。
 两端都不内置任何第三方取链逻辑，只在运行时装载音源包。
@@ -59,7 +61,7 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 产物首行是一段注释形式的包头，宿主**不执行包体**即可读取身份：
 
 ```js
-/*__QT_PACK__{"kind":"play","id":"play-official","name":"官方播放包","versionCode":2026100701,…}*/
+/*__QT_PACK__{"kind":"play","id":"play-official","name":"官方播放包","versionCode":<YYYYMMDD+2位序号>,…}*/
 ```
 
 产物尾部是签名块 `/*__QT_SIGN__{"alg":…,"sig":…}*/`。签名在构建期对**含身份头的全文**
@@ -72,6 +74,7 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 
 | 你想了解 | 页面 |
 |---|---|
+| 怎么在客户端里装音源包、换源、调音质 | [如何设置音源](/source-setup) |
 | 包模型、安装与更新流程、签名与安全闸门 | [音源包机制](/dev/source-pack) |
 | 编译、调试、打包 Windows 桌面端 | [qt-pc（Windows）](/dev/pc) |
 | 在 HBuilderX 里跑 Android / iOS 端 | [qt-uniappx（Android）](/dev/mobile) |
@@ -136,11 +139,15 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 
 ### 当前版本号
 
-| 仓库 | 版本定义位置 | 当前值 |
-|---|---|---|
-| qt-pc | `app.config.json` 的 `version.name` / `version.code` | `1.1.0` / `110` |
-| qt-uniappx | `manifest.json` 的 `versionName` / `versionCode` | `3.0.7` / `307` |
-| qt-sources | `sources.config.json` 的 `packs.meta` / `packs.play` | `2026.10.07.1` / `2026100701` |
+版本号**只在一处定义**，其余位置都由同步脚本派生或从运行时读回：
+
+| 仓库 | 版本定义位置 |
+|---|---|
+| qt-pc | `app.config.json` 的 `version.name` / `version.code` |
+| qt-uniappx | `manifest.json` 的 `versionName` / `versionCode` |
+| qt-sources | `sources.config.json` 的 `packs.meta` / `packs.play` |
+
+具体取值以各仓库文件为准，这里不抄一份（抄了就会过期）。
 
 ---
 
@@ -167,7 +174,7 @@ pnpm config:check    # 只校验（已挂进 build / test：手改派生文件�
 
 ### 版本号纪律
 
-- `qt-pc`：只改 `app.config.json` 的 `version.name` 与 `version.code` 两行（如 `1.1.0` / `110`），
+- `qt-pc`：只改 `app.config.json` 的 `version.name` 与 `version.code` 两行，
   二者自洽性由单测校验
 - `qt-uniappx`：`manifest.json` 的 `versionName` / `versionCode`
 - `qt-sources`：音源包的 `versionCode` **必须单调递增**，格式为 `YYYYMMDD` + 2 位序号，
@@ -202,6 +209,7 @@ node node_modules/typescript/bin/tsc --noEmit
 
 ## 下一步
 
+- 想在客户端里装音源包 → [如何设置音源](/source-setup)
 - 动手改桌面端 → [qt-pc（Windows）](/dev/pc)
 - 动手改移动端 → [qt-uniappx（Android）](/dev/mobile)
 - 写自己的音源包 → [音源包作者指南](/dev/pack-authoring)

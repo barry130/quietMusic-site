@@ -1,6 +1,6 @@
 # 用户协议
 
-> **最后更新**：2026-10-07 · 适用于轻听 Android 端（3.0.7+）与 Windows 桌面端（1.1.0+）
+> **最后更新**：2026-10-07 · 适用于轻听 Android 端与 Windows 桌面端
 
 在使用轻听（以下简称「本软件」）前，请仔细阅读本协议。
 **安装或继续使用本软件，即视为你已阅读并同意以下全部条款。**
@@ -9,7 +9,7 @@
 
 ## 1. 项目定位
 
-轻听是**本地音乐播放器**：本地音乐库、播放、歌词、下载管理等核心功能开箱即用，
+轻听的**本地音乐能力开箱即用**：曲库扫描、播放、歌词、下载管理等核心功能
 **不依赖任何在线音源**。
 
 在线试听、搜索、歌单等能力是**可选增强**，依赖运行时安装的「音源包」提供，
@@ -30,13 +30,17 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 
 ## 2. 软件许可
 
-本软件的客户端源代码开源。注意**各仓库的授权形态不完全相同**：
+本软件的客户端源代码开源。代码托管在 **GitHub** 与 **CNB** 两个平台，内容一致；
+注意**各仓库的授权形态不完全相同**：
 
 | 仓库 | 内容 | 许可 |
 |---|---|---|
-| [qt-uniappx](https://github.com/barry130/qt-uniappx) | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://github.com/barry130/qt-uniappx/blob/main/LICENSE-SUPPLEMENTARY.md) |
-| [qt-pc](https://github.com/barry130/qt-pc) | Windows 桌面端 | Apache-2.0 + [补充条款](https://github.com/barry130/qt-pc/blob/main/LICENSE-SUPPLEMENTARY.md) |
-| [qt-sources](https://github.com/barry130/qt-sources) | 音源包工程 | 仅供学习与技术交流使用，**未单独授权** |
+| qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://github.com/barry130/qt-uniappx/blob/main/LICENSE-SUPPLEMENTARY.md) |
+| qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://github.com/barry130/qt-pc/blob/main/LICENSE-SUPPLEMENTARY.md) |
+| qt-sources | 音源包工程 | 仅供学习与技术交流使用，**未单独授权** |
+
+仓库入口：[GitHub](https://github.com/barry130) · [CNB](https://cnb.cool/canace)，
+完整列表与反馈渠道见[反馈与贡献](/feedback)。
 
 两个客户端仓库以 **Apache-2.0** 发布，并各自附带一份**补充条款**（音源包与内容边界）。
 补充条款与 Apache-2.0 共同生效，**如二者冲突，以补充条款为准**。
@@ -149,7 +153,7 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 ## 10. 联系方式
 
 - 应用内「意见反馈」
-- [GitHub Issues](https://github.com/barry130)
+- [反馈与贡献](/feedback) —— GitHub 与 CNB 双渠道的 Issue / PR 入口
 
 ---
 

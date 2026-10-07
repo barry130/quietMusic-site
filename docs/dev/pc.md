@@ -1,7 +1,8 @@
 # qt-pc（Windows 桌面端）
 
 Tauri 2 + React 19 + Rust 2021；前端跑在 WebView2 里，取链与音频在 Rust 侧。仓库
-<https://github.com/barry130/qt-pc>，显示名「轻听」，应用 ID `com.qt.quietmusic`。
+<https://github.com/barry130/qt-pc>（CNB 镜像 <https://cnb.cool/canace/qt-pc>），
+显示名「轻听」，应用 ID `com.qt.quietmusic`。
 
 ## 环境要求
 
@@ -34,7 +35,7 @@ pnpm config:check    # 只校验（已挂进 build / test）
 
 | 字段 | 当前值 |
 |---|---|
-| `version.name` / `version.code` | `1.1.0` / `110` |
+| `version.name` / `version.code` | 版本三元组与自增数字，两者必须一起改 |
 | `product.name` / `product.displayName` | `QuietMusic` / `轻听` |
 | `product.identifier` | `com.qt.quietmusic` |
 | `backend.dev` | `http://localhost:27000/api/v1/` |
@@ -118,6 +119,10 @@ label `source-engine`，加载 `qtres://localhost/engine/index.html`，360 × 24
 Rust 广播 `source-pack-changed` 后引擎页热切换并跑一次真实取链冒烟；引擎页的
 `window.fetch` 被接管，只放行同源站内路径与 Tauri IPC 端点。
 
+播放包内含 **LX 自定义源脚本宿主**（实现在 `qt-sources`，与 Android 端共用同一份产物），
+符合 LX 自定义源协议的脚本无需改动即可装载，两端行为一致。宿主实现、脚本注册表与
+两条构建守卫见 [qt-sources（音源包工程）](/dev/sources) 的「LX 脚本宿主」。
+
 ## HTTP Range 流式播放
 
 在线播放不做「先整首下完再播」。`audio/range_reader.rs` 的 `HttpRangeReader` 实现
@@ -163,8 +168,8 @@ Get-Process quietmusic -ErrorAction SilentlyContinue | Stop-Process -Force
 GitHub Release；普通 push 只跑 `ci.yml`。
 
 ```bash
-git tag v1.1.0
-git push origin v1.1.0
+git tag v<版本>
+git push origin v<版本>
 ```
 
 ::: warning 签名密钥不可缺
@@ -219,7 +224,7 @@ Release 只托管安装包。
 - 在线能力依赖音源包，未安装时在线功能不可用
 - 无损音质可能回退（取决于上游线路）
 - 加密歌词（qrc / krc）未实现
-- 仓库公开定位为本地播放器，**不内置也不分发**任何音源实现
+- 仓库公开定位为**纯客户端**，不内置也不分发任何音源实现
 
 ## 下一步
 

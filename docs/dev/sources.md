@@ -2,7 +2,7 @@
 
 平台无关的 TypeScript 工程，**产物同时服务 Windows 与 Android 两端**。
 
-- 仓库：<https://github.com/barry130/qt-sources>
+- 仓库：<https://github.com/barry130/qt-sources>（CNB 镜像 <https://cnb.cool/canace/qt-sources>）
 - 产物：`dist/meta-bundle.js`（官方数据包）、`dist/play-bundle.js`（官方播放包）、
   `dist/chain.json`（线路表，仅本地留档）
 
@@ -159,8 +159,8 @@ node node_modules/typescript/bin/tsc --noEmit
 
 | 字段 | 值 |
 |---|---|
-| `meta.id` / `versionCode` / `versionName` | `meta-official` / `2026100701` / `2026.10.07.1` |
-| `play.id` / `versionCode` / `versionName` | `play-official` / `2026100701` / `2026.10.07.1` |
+| `meta.id` / `versionCode` / `versionName` | `meta-official` + 版本三元组（`YYYYMMDD` + 2 位序号） |
+| `play.id` / `versionCode` / `versionName` | `play-official` + 同一套版本规则 |
 | `signing.publicKey` | `mOti+JoaX2Tn6VaP91E+TaYrth4oGaUqASv9Ot4NDcE=` |
 | `signing.keyFile` | 发布机私钥文件（**不入库**） |
 | `artifacts` | `["meta-bundle.js", "play-bundle.js"]` |
@@ -174,7 +174,7 @@ node node_modules/typescript/bin/tsc --noEmit
   手动确认后才下载生效。
 
 ::: warning versionCode 必须单调递增
-格式为 `YYYYMMDD` + 2 位序号（如 `2026100701`），
+格式为 `YYYYMMDD` + 2 位序号（例如 `2026010101`），
 且 play 包的 `versionCode` **不得低于后端 manifest 历史已发布的最大值**。
 **忘了 +1，用户永远收不到更新。**
 :::
@@ -236,6 +236,30 @@ QUALITIES = [
 
 实测的 `searchPageMax`：酷我 / 网易 **100**、QQ **50**、酷狗 **30**、B 站 / 咪咕 **20**。
 网易实测 `limit=200` 会返回 **0 条**——所以这个上限不是保守估计，是接口硬边界。
+
+### LX 脚本宿主
+
+`src/schemes/lx-host/` 是本工程里最特别的一块：它让**符合 LX 自定义源协议的第三方脚本**
+无需改动即可装载进播放包，且两端（Android / Windows）行为一致。
+
+| 文件 | 职责 |
+|---|---|
+| `bridge.ts` | 通用 LX 宿主：`lx` mock（`on` / `send` / `request` / `currentScriptInfo`）、`utils.crypto`（md5 + AES）、`utils.buffer`、`process` / `window` 环境桩、定时器 try/catch 包装 |
+| `crypto.ts` | 加密实现（含 NIST 向量测试） |
+| `sources.ts` | **每个在用脚本一份宿主实例**（懒初始化、单飞）；维护脚本注册表 |
+| `vendored/<id>.js` | 第三方脚本体**逐字节原文**（入库） |
+| `vendored/<id>.wrapped.js` | 构建期生成的静态包装（同名参数遮蔽，不用 `eval` / `new Function`，以适配 CSP） |
+
+脚本注册表当前装载六个：玉宁熙-Pro、屿溪-终章、stellarwave、墨澜、洛雪音乐源、全豆要。
+另有若干已裁剪（体积与稳定性权衡）。打包口径是**只有被线路直引的脚本才进播放包**，
+脚本体约占播放包体积一半。
+
+`bridge.ts` 的关键约束（都来自真实脚本的依赖面实测）：
+
+- `SCRIPT_MD5` 必须是**脚本原文**的 md5——脚本自己会校验它
+- `process` 用桩而非真实现（多个脚本有 `process.exit` 反调试）
+- `window` 遮蔽为 `globalThis` 的 Proxy
+- `setTimeout` / `setInterval` 包 `try/catch`（混淆脚本有定时器反调试）
 
 ### 契约版本
 

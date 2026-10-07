@@ -4,7 +4,9 @@
 可更新、可被宿主信任的 `.js` 音源包。
 
 ::: tip 先跑通模板
-配套模板 [`examples/hello-play-pack.js`](https://github.com/barry130/qt-sources/blob/main/examples/hello-play-pack.js)
+配套模板
+[`examples/hello-play-pack.js`](https://github.com/barry130/qt-sources/blob/main/examples/hello-play-pack.js)
+（[CNB 镜像](https://cnb.cool/canace/qt-sources/-/blob/main/examples/hello-play-pack.js)）
 —— 手写免构建、可直接安装。装上后任何歌都会播放同一段 CC0 演示音频，
 **听到声音就说明整条链路走通了**。
 :::
@@ -29,6 +31,36 @@
 
 **为什么播放包要单独安装？** 因为它是唯一带版权风险的那一层。数据面可以随公开
 仓库分发，取链面由用户自选来源。这个拆分是刻意的，不是工程偷懒。
+
+---
+
+## 1.5 想直接用 LX 音源脚本？
+
+如果你的实现本来就是 **LX 自定义源协议**的脚本，那你不一定要按上面的工厂契约重写——
+官方播放包里内置了一个 **LX 自定义源脚本宿主**，这类脚本**无需改动即可被装载**，
+并且在 Android 与 Windows 两端行为一致。
+
+宿主提供的兼容面（都写在 `qt-sources/src/schemes/lx-host/` 里）：
+
+| 提供物 | 说明 |
+|---|---|
+| `lx` 对象 | `lx.on(EVENT_NAMES.request, handler)`、`lx.send(...)`、`lx.request(...)`、`lx.currentScriptInfo`、`lx.EVENT_NAMES` |
+| 请求回调形态 | `{ action: "musicUrl", source, info: { musicInfo, type } }`，脚本按协议回吐结果 |
+| `utils.crypto` | `md5` + `aesEncrypt`（网易 eapi 用的是 aes-128-ecb） |
+| `utils.buffer` | `from` / `bufToString`（utf8 / hex / base64） |
+| `SCRIPT_MD5` | **脚本原文**的 md5——脚本自己会拿它做自校验，必须对得上 |
+| 环境桩 | `process`（多个脚本有 `process.exit` 反调试）、`window`（遮蔽为 `globalThis`）、`setTimeout` / `setInterval`（包 try/catch） |
+
+::: warning 两条不能碰的约束
+1. **脚本体必须逐字节保全**。混淆脚本在构建期会被恢复为逐字节原文——打包器重打印
+   语法树会破坏脚本的自校验，导致解密轮转不收敛、陷入同步忙循环挂死。
+   官方流水线为此有专门的守卫步骤，挂死即中止构建。
+2. **再兼容也跑在沙箱里**。脚本能用的只有宿主注入的 `request` 通道，
+   `fetch` / `XMLHttpRequest` / `WebSocket` / `Worker` / 文件系统全是 `undefined`。
+:::
+
+具体装载哪些脚本、按什么规则打包，见 [qt-sources（音源包工程）](/dev/sources)
+的「LX 脚本宿主」一节；面向使用者的说明见 [如何设置音源](/source-setup)。
 
 ---
 
@@ -369,4 +401,6 @@ Windows 端引擎面板可见。别把它当持久化日志用。
 ## 相关
 
 - [音源包机制](/dev/source-pack) —— 包模型、签名、安全扫描的完整说明
-- [qt-sources（音源包工程）](/dev/sources) —— 官方包的构建流水线
+- [qt-sources（音源包工程）](/dev/sources) —— 官方包的构建流水线与 LX 脚本宿主
+- [如何设置音源](/source-setup) —— 面向使用者的安装与换源说明
+- [反馈与贡献](/feedback) —— 提 Issue / PR 的双渠道入口
