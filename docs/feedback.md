@@ -1,8 +1,7 @@
 # 反馈与贡献
 
-轻听是开源项目，**代码托管在两个平台，两边都接受反馈与贡献**：
-[GitHub](https://github.com/barry130) 与 [CNB](https://cnb.cool/canace)。
-两个仓库内容一致、同步推送，你可以挑网速更好、访问更顺的那个用。
+轻听是开源项目，**代码托管在 CNB**（[cnb.cool/canace](https://cnb.cool/canace)），
+Issue 与 Pull Request 都在这里提。
 
 ::: tip 最快的通道
 只是遇到问题、想吐槽或者提建议？用**应用内的「意见反馈」**就够了——
@@ -14,12 +13,12 @@
 
 ## 仓库入口
 
-| 仓库 | GitHub | CNB |
-|---|---|---|
-| **qt-uniappx**（Android / iOS 客户端） | [github.com/barry130/qt-uniappx](https://github.com/barry130/qt-uniappx) | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
-| **qt-pc**（Windows 桌面端） | [github.com/barry130/qt-pc](https://github.com/barry130/qt-pc) | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources**（音源包工程） | [github.com/barry130/qt-sources](https://github.com/barry130/qt-sources) | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
-| **quietMusic-site**（本站） | [github.com/barry130/quietMusic-site](https://github.com/barry130/quietMusic-site) | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) |
+| 仓库 | CNB |
+|---|---|
+| **qt-uniappx**（Android / iOS 客户端） | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
+| **qt-pc**（Windows 桌面端） | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
+| **qt-sources**（音源包工程） | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
+| **quietMusic-site**（本站） | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) |
 
 ---
 
@@ -28,14 +27,12 @@
 **提 Issue 之前**，先看一眼[问题答疑](/faq)——九成的疑问在那里已经有答案
 （换源、失效、音质、歌词、桌面歌词、权限、账号同步都覆盖了）。
 
-### 双渠道入口
-
-| 仓库 | GitHub Issues | CNB Issues |
-|---|---|---|
-| **qt-uniappx** | [Issues](https://github.com/barry130/qt-uniappx/issues) | [Issues](https://cnb.cool/canace/qt-uniappx/-/issues) |
-| **qt-pc** | [Issues](https://github.com/barry130/qt-pc/issues) | [Issues](https://cnb.cool/canace/qt-pc/-/issues) |
-| **qt-sources** | [Issues](https://github.com/barry130/qt-sources/issues) | [Issues](https://cnb.cool/canace/qt-sources/-/issues) |
-| **quietMusic-site** | [Issues](https://github.com/barry130/quietMusic-site/issues) | [Issues](https://cnb.cool/canace/quietMusic-site/-/issues) |
+| 仓库 | Issues |
+|---|---|
+| **qt-uniappx** | [Issues](https://cnb.cool/canace/qt-uniappx/-/issues) |
+| **qt-pc** | [Issues](https://cnb.cool/canace/qt-pc/-/issues) |
+| **qt-sources** | [Issues](https://cnb.cool/canace/qt-sources/-/issues) |
+| **quietMusic-site** | [Issues](https://cnb.cool/canace/quietMusic-site/-/issues) |
 
 不知道该提到哪个仓库？**Android 端的问题 → qt-uniappx，Windows 端的问题 → qt-pc**，
 不确定就随便挑一个，我们会移动它。
@@ -67,14 +64,14 @@
 
 ## 代码贡献（Pull Requests）
 
-欢迎提交改进。四个仓库都接受 PR，两个平台都可以提：
+欢迎提交改进。四个仓库都接受 PR：
 
-| 仓库 | GitHub PR | CNB PR |
-|---|---|---|
-| **qt-uniappx** | [Pull requests](https://github.com/barry130/qt-uniappx/pulls) | [Pull requests](https://cnb.cool/canace/qt-uniappx/-/pulls) |
-| **qt-pc** | [Pull requests](https://github.com/barry130/qt-pc/pulls) | [Pull requests](https://cnb.cool/canace/qt-pc/-/pulls) |
-| **qt-sources** | [Pull requests](https://github.com/barry130/qt-sources/pulls) | [Pull requests](https://cnb.cool/canace/qt-sources/-/pulls) |
-| **quietMusic-site** | [Pull requests](https://github.com/barry130/quietMusic-site/pulls) | [Pull requests](https://cnb.cool/canace/quietMusic-site/-/pulls) |
+| 仓库 | Pull requests |
+|---|---|
+| **qt-uniappx** | [Pull requests](https://cnb.cool/canace/qt-uniappx/-/pulls) |
+| **qt-pc** | [Pull requests](https://cnb.cool/canace/qt-pc/-/pulls) |
+| **qt-sources** | [Pull requests](https://cnb.cool/canace/qt-sources/-/pulls) |
+| **quietMusic-site** | [Pull requests](https://cnb.cool/canace/quietMusic-site/-/pulls) |
 
 ### 动手之前
 
@@ -110,9 +107,9 @@
 
 ## 文档与站点
 
-本站源码在 [quietMusic-site](https://github.com/barry130/quietMusic-site)
-（[CNB 镜像](https://cnb.cool/canace/quietMusic-site)）。发现错别字、过时描述、
-不准确的说明，直接提 Issue 或者改一版 PR 都很欢迎——每页右上角有「在 GitHub 上编辑此页」。
+本站源码在 [quietMusic-site](https://cnb.cool/canace/quietMusic-site)。
+发现错别字、过时描述、不准确的说明，直接提 Issue 或者改一版 PR 都很欢迎——
+每页右上角有「在 CNB 上编辑此页」。
 
 ---
 

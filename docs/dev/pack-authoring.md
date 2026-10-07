@@ -5,8 +5,7 @@
 
 ::: tip 先跑通模板
 配套模板
-[`examples/hello-play-pack.js`](https://github.com/barry130/qt-sources/blob/main/examples/hello-play-pack.js)
-（[CNB 镜像](https://cnb.cool/canace/qt-sources/-/blob/main/examples/hello-play-pack.js)）
+[`examples/hello-play-pack.js`](https://cnb.cool/canace/qt-sources/-/blob/main/examples/hello-play-pack.js)
 —— 手写免构建、可直接安装。装上后任何歌都会播放同一段 CC0 演示音频，
 **听到声音就说明整条链路走通了**。
 :::

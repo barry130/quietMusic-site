@@ -122,18 +122,18 @@ features:
 
 ## 三个仓库
 
-代码托管在两个平台，内容一致、同步推送，挑访问更顺的那个即可。
+代码托管在 CNB（`cnb.cool/canace`），Issue 与 PR 都在这里收。
 
-| 仓库 | 平台 | 说明 | GitHub | CNB |
-|---|---|---|---|---|
-| **qt-uniappx** | Android / iOS | UniAppX（UVue + UTS）客户端，含音频内核、悬浮窗歌词、音源包引擎等原生插件 | [仓库](https://github.com/barry130/qt-uniappx) | [仓库](https://cnb.cool/canace/qt-uniappx) |
-| **qt-pc** | Windows | Tauri 2 + React 19 + Rust 桌面端 | [仓库](https://github.com/barry130/qt-pc) | [仓库](https://cnb.cool/canace/qt-pc) |
-| **qt-sources** | 平台无关 | 音源实现与打包流程，产物同时服务上面两端 | [仓库](https://github.com/barry130/qt-sources) | [仓库](https://cnb.cool/canace/qt-sources) |
+| 仓库 | 平台 | 说明 | 仓库 |
+|---|---|---|---|
+| **qt-uniappx** | Android / iOS | UniAppX（UVue + UTS）客户端，含音频内核、悬浮窗歌词、音源包引擎等原生插件 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
+| **qt-pc** | Windows | Tauri 2 + React 19 + Rust 桌面端 | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
+| **qt-sources** | 平台无关 | 音源实现与打包流程，产物同时服务上面两端 | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
 
 **仓库边界是清晰的**：客户端仓库里没有任何第三方平台取链实现。
 这不是疏忽，是刻意的设计边界。
 
-欢迎提交 Issue 与 PR——见[反馈与贡献](/feedback)，两个平台都收。
+欢迎提交 Issue 与 PR——见[反馈与贡献](/feedback)。
 
 ---
 

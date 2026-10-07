@@ -1,7 +1,7 @@
 # qt-pc（Windows 桌面端）
 
 Tauri 2 + React 19 + Rust 2021；前端跑在 WebView2 里，取链与音频在 Rust 侧。仓库
-<https://github.com/barry130/qt-pc>（CNB 镜像 <https://cnb.cool/canace/qt-pc>），
+<https://cnb.cool/canace/qt-pc>，
 显示名「轻听」，应用 ID `com.qt.quietmusic`。
 
 ## 环境要求

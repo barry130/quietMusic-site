@@ -124,17 +124,11 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern:
-        "https://github.com/barry130/quietMusic-site/edit/main/docs/:path",
-      text: "在 GitHub 上编辑此页",
+      pattern: "https://cnb.cool/canace/quietMusic-site/-/edit/main/docs/:path",
+      text: "在 CNB 上编辑此页",
     },
 
     socialLinks: [
-      {
-        icon: "github",
-        link: "https://github.com/barry130/quietMusic-site",
-        ariaLabel: "GitHub",
-      },
       {
         // CNB 在内置图标集里没有对应项，直接用内联 SVG（Simple Icons 的 git 标记），
         // 避免运行时去 iconify CDN 取图。
@@ -143,6 +137,12 @@ export default defineConfig({
         },
         link: "https://cnb.cool/canace/quietMusic-site",
         ariaLabel: "CNB",
+      },
+      {
+        // 安装包 Release 目前只发在 GitHub，入口保留。
+        icon: "github",
+        link: "https://github.com/barry130/quietMusic-site",
+        ariaLabel: "GitHub",
       },
     ],
   },

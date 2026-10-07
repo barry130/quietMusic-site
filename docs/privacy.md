@@ -216,7 +216,7 @@ Windows 端的数据根目录是 `%APPDATA%\QuietMusic`（数据库在 `data/mus
 ## 8. 联系我们
 
 - 应用内「意见反馈」
-- [反馈与贡献](/feedback) 页列出的 GitHub / CNB 渠道
+- [反馈与贡献](/feedback) 页列出的 CNB 渠道
 
 数据删除、账号恢复、隐私相关的具体问题，走上面任一渠道都可以。
 

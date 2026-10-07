@@ -6,13 +6,13 @@
 
 ## 三个仓库与边界
 
-代码托管在两个平台，内容一致、同步推送：**GitHub** 与 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
+代码托管在 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
 
-| 仓库 | 面向平台 | 技术栈 | 产物 | GitHub | CNB |
-|---|---|---|---|---|---|
-| **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [仓库](https://github.com/barry130/qt-uniappx) | [仓库](https://cnb.cool/canace/qt-uniappx) |
-| **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [仓库](https://github.com/barry130/qt-pc) | [仓库](https://cnb.cool/canace/qt-pc) |
-| **qt-sources** | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | [仓库](https://github.com/barry130/qt-sources) | [仓库](https://cnb.cool/canace/qt-sources) |
+| 仓库 | 面向平台 | 技术栈 | 产物 | 仓库 |
+|---|---|---|---|---|
+| **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
+| **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
+| **qt-sources** | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
 
 关键的架构约定：**音源实现只存在于 qt-sources**。
 两端都不内置任何第三方取链逻辑，只在运行时装载音源包。

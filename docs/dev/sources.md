@@ -2,7 +2,7 @@
 
 平台无关的 TypeScript 工程，**产物同时服务 Windows 与 Android 两端**。
 
-- 仓库：<https://github.com/barry130/qt-sources>（CNB 镜像 <https://cnb.cool/canace/qt-sources>）
+- 仓库：<https://cnb.cool/canace/qt-sources>
 - 产物：`dist/meta-bundle.js`（官方数据包）、`dist/play-bundle.js`（官方播放包）、
   `dist/chain.json`（线路表，仅本地留档）
 
