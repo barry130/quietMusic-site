@@ -9,7 +9,8 @@
 ::: tip 一句话流程
 **首页「去安装」→ 音源包管理 → 从链接安装**（或检查更新 / 选本地文件）→ 装完自动冒烟自检 → 生效。
 
-只想照着做一遍，直接跳到[手机端图文教程](#二、手机端图文教程-从链接安装)。
+只想照着做一遍，直接跳到[手机端图文教程](#三、手机端图文教程-从链接安装)；
+不想找链接，直接复制[官方音源直链](#二、官方音源直链-可直接复制)。
 :::
 
 ---
@@ -29,10 +30,51 @@
 
 ---
 
-## 二、手机端图文教程：从链接安装
+## 二、官方音源直链（可直接复制）
+
+下面两条就是**当前官方音源包**的直链，按「[从链接安装](#三、手机端图文教程-从链接安装)」粘贴进输入框即可。
+数据包和播放包**两个都要装**，点各自代码框右上角的复制按钮**分别单独复制**，别复制混了。
+
+<div class="link-cards">
+
+<div class="link-card">
+
+<p class="link-card-head"><span class="link-card-badge">数据包</span> <code>meta-official</code> · 搜索 / 歌单 / 榜单 / 歌词 / 封面</p>
+
+```text
+https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/meta-bundle.js
+```
+
+</div>
+
+<div class="link-card">
+
+<p class="link-card-head"><span class="link-card-badge">播放包</span> <code>play-official</code> · 在线播放取链</p>
+
+```text
+https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundle.js
+```
+
+</div>
+
+</div>
+
+::: warning 直链随时可能失效，失效了不是你的错
+这两条链接挂在 CNB Release 上，**官方一发新版本，旧链接就可能 404**。这是正常现象，不是你操作错了。
+
+- 装的时候报下载失败 / 404 → 回[三种安装方式](#四、三种安装方式)里的**方式一（官方包）**，
+  让客户端自己点「检查更新」拉最新版，这条路径不受链接失效影响，也是更省事的做法
+- **直链装的包不参与自动更新**，之后要升级得重新回来复制一条新链接
+- 本页的链接会跟着官方发布一起更新，你能看到这里，就说明当时它还是最新的
+:::
+
+---
+
+## 三、手机端图文教程：从链接安装
 
 下面以 **Android 手机端**为例，走一遍「从链接安装」的完整流程。整个过程五步，
 **数据包与播放包各装一次**（顺序不限，建议先数据包后播放包）。
+链接直接复制[上面那两条](#二、官方音源直链-可直接复制)，不用去别处找。
 
 <div class="shot-grid">
 
@@ -71,12 +113,12 @@
 
 ::: tip 装完怎么确认
 安装后会**自动冒烟自检**，通过即生效。列表里能看到「官方数据包」与「官方播放包」都处于
-**生效中**，就说明装好了。详见[怎么确认装好了](#七、怎么确认装好了)。
+**生效中**，就说明装好了。详见[怎么确认装好了](#八、怎么确认装好了)。
 :::
 
 ---
 
-## 三、三种安装方式
+## 四、三种安装方式
 
 上面演示的是**方式二（https 直链）**。三种方式任选其一即可，效果完全一样。
 
@@ -111,7 +153,7 @@
 
 ---
 
-## 四、兼容 LX 音源脚本
+## 五、兼容 LX 音源脚本
 
 这是轻听音源体系里最实用的一点：**播放包内置一个 LX 自定义源脚本宿主**。
 
@@ -144,7 +186,7 @@
 
 ---
 
-## 五、设置默认音源与音质
+## 六、设置默认音源与音质
 
 装好包之后，在「设置」里还有两处需要调：
 
@@ -164,7 +206,7 @@
 
 ---
 
-## 六、启用、切换与卸载
+## 七、启用、切换与卸载
 
 - **启用**：多个播放包并存时，点一下「启用」即可热切换，立即重新做一次取链冒烟自检
 - **卸载**：列表里删除即可
@@ -172,7 +214,7 @@
 
 ---
 
-## 七、怎么确认装好了
+## 八、怎么确认装好了
 
 安装或启用播放包后，客户端会自动做一次**冒烟自检**：拿真实歌曲调用取链 + Range 预检。
 
@@ -184,7 +226,7 @@
 
 ---
 
-## 八、装不上 / 不生效怎么办
+## 九、装不上 / 不生效怎么办
 
 | 现象 | 先试什么 |
 |---|---|
@@ -207,6 +249,78 @@
 - [问题答疑](/faq) —— 播放、音质、歌词、权限等问题
 
 <style>
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+  margin: 20px 0 8px;
+}
+
+.link-cards .link-card {
+  padding: 14px 16px 4px;
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+}
+
+.link-cards .link-card-head {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+.link-cards .link-card-head code {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+}
+
+.link-cards .link-card-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  margin-right: 4px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--vp-c-brand-1);
+}
+
+.link-cards .link-card div[class*="language-"] {
+  margin: 8px 0 10px;
+}
+
+.link-cards .link-card div[class*="language-"] pre {
+  margin: 0;
+}
+
+.link-cards .link-card div[class*="language-"] code {
+  font-size: 12.5px;
+  /* 只在 / 等可断处折行，别把文件名从中间劈开 */
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  /* 给右上角复制按钮让位 */
+  padding-right: 46px;
+}
+
+/* 手机上没有 hover，VitePress 默认的复制按钮（opacity:0）永远不出现，
+   这两条链接正是给手机用的，所以卡片里的按钮常驻显示。 */
+.link-cards .link-card div[class*="language-"] > button.copy {
+  top: 8px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  background-size: 18px;
+  opacity: 1;
+}
+
+/* 语言角标（text）在卡片里没有信息量，去掉省地方 */
+.link-cards .link-card div[class*="language-"] > span.lang {
+  display: none;
+}
+
 .shot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
