@@ -19,7 +19,7 @@ Windows 10 / 11 + WebView2 Runtime（Win11 自带）；Node ≥ 20 + pnpm；Rust
 | 网络 | `reqwest` 0.13（关闭默认特性，走 `rustls`） |
 | 系统集成 | `souvlaki` 0.8（SMTC 媒体控制 / 硬件媒体键）、`windows` 0.62 |
 
-主窗口只管界面与本地库；取链、解码、下载都在 Rust 侧，前端调用统一走 `src/services/ipc.ts`。
+主窗口只管界面与本地库；取链、解码、下载都在 Rust 侧，前端统一走 `src/services/ipc.ts`。
 
 ## 配置只改一处
 
@@ -105,12 +105,12 @@ label `source-engine`，加载 `qtres://localhost/engine/index.html`，360 × 24
 
 | kind | 用途 | 超时 |
 |---|---|---|
-| `status` | 引擎生命周期（`booting` / `ready` / `error`）与当前生效播放包 | 2.5 s |
+| `status` | 引擎生命周期（`booting`/`ready`/`error`）与当前生效播放包 | 2.5 s |
 | `resolve` | 取链；`url` 为空串表示失败 / 无可用层 | 9.5 s |
 | `invoke` | 调数据包接口（`__qtEntries` 入口名 + JSON 参数） | 20 s |
 
 取链 9.5 s = 包侧整链预算 9 s + 宽限 250 ms + 调度余量；`playurl_bridge.rs` 的
-`ASK_TIMEOUT` 必须严格大于它（现为 14 s）。
+`ASK_TIMEOUT` 必须大于它（现为 14 s）。
 
 装载流程：`fetch` 包头（`kind` / `id` 要对得上）→ 动态 `import` → 取 `__qtEntries` 或
 `globalThis.__qtEntries` → 用 `bundleInfo()` 复验 `name === "meta-bundle"` 且
@@ -150,7 +150,7 @@ Rust 广播 `source-pack-changed` 后引擎页热切换并跑一次真实取链�
 
 NSIS 用仓库自带模板 `nsis/installer.nsi`（Tauri 官方模板 + 18 行补丁），安装模式
 `currentUser`，语言 `SimpChinese`。补丁让升级或同版本重装**不再弹「系统中已存在…是否卸载」**，
-直接原地覆盖，用户数据不受影响。打包前先关掉运行中的 QuietMusic（含托盘），否则链接阶段报
+直接原地覆盖，用户数据不受影响。打包前先关掉运行中的 QuietMusic，否则链接阶段报
 `failed to remove file … os error 5 拒绝访问`：
 
 ```powershell
@@ -181,8 +181,8 @@ node scripts/update-sign.mjs verify <exe 路径>
 对 `.sig` 不可达时自动降级回原始直链。
 :::
 
-发版后把「下载地址 / MD5 / fileSize」填进后端管理后台的更新记录：应用内更新检查走后端，
-GitHub Release 只托管安装包。
+发版后把「下载地址 / MD5 / fileSize」填进后端管理后台的更新记录：应用内更新检查走后端，GitHub
+Release 只托管安装包。
 
 ## 安全边界
 
@@ -201,7 +201,7 @@ GitHub Release 只托管安装包。
 | 现象 | 原因与处理 |
 |---|---|
 | `unrecognized subcommand 'DSH Desktop.exe'` | 用了 `pnpm tauri build`，改用 `pnpm exec tauri build --runner cargo` |
-| `ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY` | pnpm 自身拦截，直接调 node 入口（`node node_modules/vite/bin/vite.js build` 等） |
+| `ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY` | pnpm 自身拦截，改调 node 入口（`node node_modules/vite/bin/vite.js build` 等） |
 | `failed to remove file … os error 5` | QuietMusic 还在运行，先结束进程（含托盘） |
 | `pnpm build` 挂起并问 `Terminate batch job (Y/N)?` | 组合命令的交互问题，拆成两条执行 |
 | NSIS 下载 `makensis` 卡住 | 设 `TAURI_NSIS_PATH`；下载超时则配 `$env:HTTPS_PROXY = "socks5://127.0.0.1:10808"`（HTTP 代理端口不行） |
@@ -210,8 +210,8 @@ GitHub Release 只托管安装包。
 | 启动后一直挂着终端窗口 | `main.rs` 顶部缺 `#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]` |
 | `local-mirror … 连接失败 (os error 10061)` | 没起 `node tools/registry-proxy.mjs`（crates 镜像，`127.0.0.1:8650`，配合 `src-tauri/.cargo/config.toml`） |
 
-另外：不要用 `>nul` 重定向（会在 PowerShell 里生成名为 `nul` 的垃圾文件）；`node_modules/`
-与 `.pnpm-store/` 不要删，本机 pnpm 安装不稳，删了可能装不回来。
+另外：不要用 `>nul` 重定向（会在 PowerShell 里生成 `nul` 垃圾文件）；`node_modules/` 与
+`.pnpm-store/` 不要删。
 
 ## 已知限制
 
@@ -219,7 +219,7 @@ GitHub Release 只托管安装包。
 - 在线能力依赖音源包，未安装时在线功能不可用
 - 无损音质可能回退（取决于上游线路）
 - 加密歌词（qrc / krc）未实现
-- 仓库公开定位为本地音乐播放器，**不内置也不分发**任何音源实现
+- 仓库公开定位为本地播放器，**不内置也不分发**任何音源实现
 
 ## 下一步
 

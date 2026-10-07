@@ -84,16 +84,17 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 
 | 目标 | 需要准备 |
 |---|---|
-| 通用 | Node.js ≥ 20、pnpm（两个前端仓库的脚本都按 pnpm 写） |
+| 通用 | Node.js ≥ 20、pnpm（qt-pc / qt-sources 的脚本都按 pnpm 写；qt-uniappx 用 npm） |
 | qt-pc | Windows 10 / 11、WebView2 Runtime（Win11 自带）、Rust ≥ 1.87（edition 2021，含 MSVC 工具链） |
 | qt-uniappx | HBuilderX 5.x 或更高版本、Android SDK 或 iOS 工具链、真机 / 模拟器 |
 | qt-sources | 只需 Node.js；`devDependencies` 仅 esbuild / typescript / vite / vitest，无原生依赖 |
 
 ::: warning qt-uniappx 必须用自定义基座
-标准基座不含 `qt-app-native`、`qt-audio-player`、`qt-js-engine`、`qt-stat`、`qt-ui`
-这五个 UTS 原生插件，直接跑会出现「找不到悬浮窗授权入口」这类假故障。
-必须使用自定义基座或云端打包；改过 UTS 代码后要重新编译插件并重建基座。
-（早期文档里的 `qt-media-store` 已合并进 `qt-app-native`，不再是独立插件。）
+标准基座不含 `qt-app-native`、`qt-audio-player`、`qt-js-engine`、`qt-stat` 这四个 UTS 原生
+插件（`dcloudext.type` 为 `uts`），直接跑会出现「找不到悬浮窗授权入口」这类假故障。必须使用
+自定义基座或云端打包；改过 UTS 代码后要重新编译插件并重建基座。`qt-ui` 是纯 UI 组件库
+（`type: "component"`），跟随工程一起编译，不需要进基座。
+（早期独立的 `qt-media-store` 已合并进 `qt-app-native`。）
 :::
 
 ---

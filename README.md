@@ -16,8 +16,9 @@ npm run dev        # http://localhost:5173/
 ## 构建
 
 ```bash
-npm run build      # 产物在 docs/.vitepress/dist
+npm run build       # 产物在 docs/.vitepress/dist
 npm run preview
+npm run check:links # 校验站内链接与锚点（需先 build）
 ```
 
 ## 结构
@@ -38,9 +39,12 @@ docs/
     ├── source-pack.md          音源包机制
     └── pack-authoring.md       音源包作者指南
 docs/.vitepress/config.mts      站点配置
+scripts/check-links.mjs         站内链接与锚点校验（只读，不参与构建）
+scripts/deploy.mjs              EdgeOne CLI 部署（方式 B）
 ```
 
-改 `docs/.vitepress/config.mts` 里的 nav / sidebar 即可增删页面。
+改 `docs/.vitepress/config.mts` 里的 nav / sidebar 即可增删页面。改完链接后跑一次
+`npm run build && npm run check:links`，它会把解析不到的页面与锚点全部列出来。
 
 ## 部署
 

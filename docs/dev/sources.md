@@ -266,5 +266,5 @@ const HOST_API_VERSION = 1        // 宿主注入接口版本
 
 ## 相关
 
-- [音源包机制](./source-pack) —— 包模型、签名、安全扫描的完整说明
-- [音源包作者指南](./pack-authoring) —— 从零写一个可安装的播放包
+- [音源包机制](/dev/source-pack) —— 包模型、签名、安全扫描的完整说明
+- [音源包作者指南](/dev/pack-authoring) —— 从零写一个可安装的播放包

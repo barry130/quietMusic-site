@@ -8,6 +8,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
+    "check:links": "node scripts/check-links.mjs",
     "deploy": "node scripts/deploy.mjs",
     "deploy:preview": "node scripts/deploy.mjs --env preview"
   },
