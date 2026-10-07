@@ -2,17 +2,15 @@
 
 平台无关的 TypeScript 工程，**产物同时服务 Windows 与 Android 两端**。
 
-- 仓库：**私有**（构建仓，不对外公开；`canace/qt-sources` 需授权才能访问）
-- 公开的对外接口面在另一个仓库：<https://cnb.cool/canace/qt-sources-sdk>
-  （类型契约、宿主 API、包作者指南、示例包，MIT）
+- 仓库：<https://cnb.cool/canace/qt-sources>
+- 类型契约与宿主 API 单独拆在 <https://cnb.cool/canace/qt-sources-sdk>（MIT）：
+  只有纯类型、宿主 API 声明、[作者指南](/dev/pack-authoring)与示例包
 - 产物：`dist/meta-bundle.js`（官方数据包）、`dist/play-bundle.js`（官方播放包）、
   `dist/chain.json`（线路表，仅本地留档）
 
-::: warning 为什么源码不公开
-这个工程打包时会内嵌第三方音乐源脚本原文与各平台取链实现，构建仓因此转为私有，
-取链面与脚本原文不对外分发。需要参与的是**播放包作者**：请看
-[qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) 与
-[音源包作者指南](/dev/pack-authoring)，那是公开且签了 MIT 的部分。
+::: tip 想写自己的播放包
+播放包里要实现的是取链，而取链不在类型契约里。按[音源包作者指南](/dev/pack-authoring)
+从零写一个可安装的播放包即可 —— 它只需要 SDK 里的类型与宿主 API。
 :::
 
 这个工程是从 `qt-pc` 拆出来的。原先音源包的源码、构建脚本、测试都住在
@@ -292,8 +290,7 @@ const HOST_API_VERSION = 1        // 宿主注入接口版本
 | `play-bundle.js` | ~1.4 MB | LX 脚本宿主 + 各平台官方接口 + chain 执行器；IIFE | 换脚本 / 改官方接口 / 加宿主能力 |
 | `chain.json` | ~4.6 KB | 线路表（**仅本地留档**对比两次发布的线路变化，不交付） | — |
 
-产物不在公开仓库里分发：取链面与第三方脚本原文留在私有构建仓，
-对外只发布 [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) 里的类型契约、
+取链面与第三方脚本原文只在这个工程里，对外发布的是 [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) 里的类型契约、
 宿主 API 与作者指南，取链由用户自行安装的播放包提供。
 构建时 meta 包有一道**敏感词闸门**：取链面痕迹零命中才允许发布。
 
