@@ -1,4 +1,4 @@
-# qt-site
+# quietMusic-site
 
 轻听（QuietMusic）官方站点源码 —— 功能介绍、下载安装、开发指南、问题答疑、
 用户协议与隐私政策。
@@ -45,9 +45,8 @@ docs/.vitepress/config.mts      站点配置
 ## 部署
 
 站点部署在 **EdgeOne Pages** 免费档（免费计划官方承诺长期可用），直接用 CLI
-上传构建产物，不走 Git 托管。base 为 `/`，挂在默认域名根目录；将来若改绑
-子路径（如 GitHub Pages 的 `/qt-site/`），需要同步改
-`docs/.vitepress/config.mts` 里的 `base`。
+上传构建产物。base 为 `/`，挂在默认域名根目录；将来若改绑子路径，需要同步
+改 `docs/.vitepress/config.mts` 里的 `base`。
 
 ### 首次配置
 
@@ -60,7 +59,7 @@ docs/.vitepress/config.mts      站点配置
    ```
 
    ```ini
-   EDGEONE_PROJECT_NAME=qt-site      # 首次部署会创建同名项目，之后同名即更新
+   EDGEONE_PROJECT_NAME=quietmusic-site      # 首次部署会创建同名项目，之后同名即更新
    EDGEONE_PAGES_API_TOKEN=<你的 token>
    ```
 
@@ -78,11 +77,25 @@ npm run deploy:preview    # 预发环境（先预览再上生产）
 调用项目内的 `edgeone` CLI 执行 `makers deploy docs/.vitepress/dist`。缺少
 token 或未构建时会直接报错退出，不会带着残缺产物上生产。
 
-### 自定义域名（可选）
+### 源码仓库
 
-默认域名形如 `*.edgeone.app`，免备案即可访问。若在中国站绑定自有域名，
-按合规要求该域名需完成 ICP 备案；绑定后在控制台申请免费证书并添加 CNAME
-解析即可。
+本仓库双推到两个远端（GitHub 主、CNB 备），沿用 astral 的惯例把 CNB 配成
+origin 的第二条 pushurl：
+
+```bash
+git remote add origin https://github.com/barry130/quietMusic-site.git
+git remote set-url --add --push origin https://cnb.cool/canace/quietMusic-site.git
+```
+
+一次 `git push origin main` 会同时推到两个远端。GitHub 在本机需要走代理、
+CNB 需要直连，可以按远端单独配：
+
+```bash
+git config --local remote.origin.proxy socks5h://127.0.0.1:10808
+```
+
+均已配好，`git remote -v` 可见 origin 有两条 push 地址。**注意：这两个只是
+源码仓库，站点本身不走 Git 自动发布**，仍需按上面的步骤执行 `npm run deploy`。
 
 ## 相关仓库
 

@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 // 站点基路径：站点的输出目录就是根，部署在域名根目录（如 EdgeOne Pages 的
 // *.edgeone.app 默认域名，或绑定的自定义域）。
-// 若将来要挂在某个子路径下（如 GitHub Pages 项目站点 /qt-site/），把 base 改成对应前缀。
+// 若将来要挂在某个子路径下（如 GitHub Pages 项目站点 /<repo>/），把 base 改成对应前缀。
 const base = "/";
 
 export default defineConfig({
@@ -117,11 +117,17 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: "https://github.com/barry130/qt-site/edit/master/docs/:path",
+      pattern:
+        "https://github.com/barry130/quietMusic-site/edit/main/docs/:path",
       text: "在 GitHub 上编辑此页",
     },
 
-    socialLinks: [{ icon: "github", link: "https://github.com/barry130" }],
+    socialLinks: [
+      {
+        icon: "github",
+        link: "https://github.com/barry130/quietMusic-site",
+      },
+    ],
   },
 
   markdown: {
