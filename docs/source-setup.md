@@ -7,7 +7,9 @@
 只是不会出现在线入口。
 
 ::: tip 一句话流程
-**设置 → 音源包管理 → 检查更新**（或粘贴直链 / 选本地文件）→ 装完自动冒烟自检 → 生效。
+**首页「去安装」→ 音源包管理 → 从链接安装**（或检查更新 / 选本地文件）→ 装完自动冒烟自检 → 生效。
+
+只想照着做一遍，直接跳到[手机端图文教程](#二、手机端图文教程-从链接安装)。
 :::
 
 ---
@@ -27,7 +29,56 @@
 
 ---
 
-## 二、三种安装方式
+## 二、手机端图文教程：从链接安装
+
+下面以 **Android 手机端**为例，走一遍「从链接安装」的完整流程。整个过程五步，
+**数据包与播放包各装一次**（顺序不限，建议先数据包后播放包）。
+
+<div class="shot-grid">
+
+<figure class="shot">
+<img src="/source-setup/step-1-home-entry.png" alt="首页弹窗「安装数据包，启用在线功能」，箭头指向红色的「去安装」按钮" loading="lazy" />
+<figcaption><b>① 首页点「去安装」</b>未装数据包时，首页会弹窗提示在线功能不可用，点「去安装」直接进音源包管理页。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/step-2-source-manage.png" alt="音源包管理页滑到最底部，「安装音源包」区域里的「从链接安装」按钮" loading="lazy" />
+<figcaption><b>② 滑到最底下</b>进入音源包管理页后，向下滑到页面底部，找到「安装音源包」区域。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/step-3-paste-link.png" alt="「从链接安装」弹窗，输入框里已粘贴音源包的 https 直链，右下角是「下载并校验」" loading="lazy" />
+<figcaption><b>③ 选择「从链接安装」</b>粘贴对应的音源包 https 直链，点「下载并校验」。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/step-4-meta-pack.png" alt="安装确认弹窗：类型 数据包、名称 官方数据包、id meta-official，显示「官方签名校验通过」" loading="lazy" />
+<figcaption><b>④ 安装数据包</b>确认弹窗会列出类型 / 名称 / 版本 / id / 来源，并标注「官方签名校验通过」，点「安装」。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/step-5-play-pack.png" alt="安装确认弹窗：类型 播放包、名称 官方播放包、id play-official，显示「官方签名校验通过」" loading="lazy" />
+<figcaption><b>⑤ 安装播放包</b>再用同样的方式粘贴播放包链接，装完数据包与播放包，在线功能才完整。</figcaption>
+</figure>
+
+</div>
+
+::: warning 数据包与播放包是两个包，都要装
+只装**数据包**能搜到内容但点不开（在线播放不可用）；只装**播放包**能播但没内容可浏览
+（搜索、歌单、歌词、封面不可用）。两个包的 id 不同——`meta-official` 是数据包，
+`play-official` 是播放包——粘贴链接时别搞混。
+:::
+
+::: tip 装完怎么确认
+安装后会**自动冒烟自检**，通过即生效。列表里能看到「官方数据包」与「官方播放包」都处于
+**生效中**，就说明装好了。详见[怎么确认装好了](#七、怎么确认装好了)。
+:::
+
+---
+
+## 三、三种安装方式
+
+上面演示的是**方式二（https 直链）**。三种方式任选其一即可，效果完全一样。
 
 ### 方式一：官方包（推荐）
 
@@ -60,7 +111,7 @@
 
 ---
 
-## 三、兼容 LX 音源脚本
+## 四、兼容 LX 音源脚本
 
 这是轻听音源体系里最实用的一点：**播放包内置一个 LX 自定义源脚本宿主**。
 
@@ -93,7 +144,7 @@
 
 ---
 
-## 四、设置默认音源与音质
+## 五、设置默认音源与音质
 
 装好包之后，在「设置」里还有两处需要调：
 
@@ -113,7 +164,7 @@
 
 ---
 
-## 五、启用、切换与卸载
+## 六、启用、切换与卸载
 
 - **启用**：多个播放包并存时，点一下「启用」即可热切换，立即重新做一次取链冒烟自检
 - **卸载**：列表里删除即可
@@ -121,7 +172,7 @@
 
 ---
 
-## 六、怎么确认装好了
+## 七、怎么确认装好了
 
 安装或启用播放包后，客户端会自动做一次**冒烟自检**：拿真实歌曲调用取链 + Range 预检。
 
@@ -133,7 +184,7 @@
 
 ---
 
-## 七、装不上 / 不生效怎么办
+## 八、装不上 / 不生效怎么办
 
 | 现象 | 先试什么 |
 |---|---|
@@ -154,3 +205,40 @@
 - [音源包作者指南](/dev/pack-authoring) —— 从零写一个自己的音源包
 - [下载安装](/download) —— 先拿到客户端
 - [问题答疑](/faq) —— 播放、音质、歌词、权限等问题
+
+<style>
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.shot-grid .shot {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+}
+
+.shot-grid .shot img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 12px;
+  border-radius: 8px;
+}
+
+.shot-grid .shot figcaption {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+.shot-grid .shot figcaption b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--vp-c-text-1);
+}
+</style>
