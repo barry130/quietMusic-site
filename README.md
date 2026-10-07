@@ -39,8 +39,10 @@ docs/
     ├── source-pack.md          音源包机制
     └── pack-authoring.md       音源包作者指南
 docs/.vitepress/config.mts      站点配置
+.cnb.yml                        CNB 流水线：push main → EdgeOne Makers Webhook（方式 A'）
+edgeone.json                    EdgeOne Git 集成的构建配置（方式 A）
 scripts/check-links.mjs         站内链接与锚点校验（只读，不参与构建）
-scripts/deploy.mjs              EdgeOne CLI 部署（方式 B）
+scripts/deploy.mjs              EdgeOne CLI 部署（手工兜底方式 B）
 ```
 
 改 `docs/.vitepress/config.mts` 里的 nav / sidebar 即可增删页面。改完链接后跑一次
@@ -48,8 +50,16 @@ scripts/deploy.mjs              EdgeOne CLI 部署（方式 B）
 
 ## 部署
 
-站点部署在 **EdgeOne Pages** 免费档（免费计划官方承诺长期可用）。推荐「导入
-Git 仓库」让腾讯云代构建（见方式 A），也可以本地构建后用 CLI 上传（方式 B）。
+站点部署在 **EdgeOne Pages** 免费档（服务器头 `Server: edgeone makers`），挂腾讯云默认
+域名 `quietmusic.canace.cn`。push 到 `main` 即自动部署，**无需任何手工操作**，
+两条并存的触发路径：
+
+| 路径 | 触发链路 | 说明 |
+| --- | --- | --- |
+| 方式 A | push → GitHub → EdgeOne Git 集成代构建 | 控制台「导入 Git 仓库」绑 `barry130/quietMusic-site` |
+| 方式 A' | push → CNB `.cnb.yml` → EdgeOne Makers Webhook | 仓库根目录 `.cnb.yml`，与方式 A 互不冲突 |
+
+手工方式（本地构建 + CLI 上传）只在上面两条都不可用时才需要。
 
 base 为 `/`，挂在默认域名根目录；将来若改绑子路径，需要同步改
 `docs/.vitepress/config.mts` 里的 `base`。
@@ -126,10 +136,23 @@ git config --local remote.origin.proxy socks5h://127.0.0.1:10808
 
 均已配好，`git remote -v` 可见 origin 有两条 push 地址。
 
-**CNB 的特殊之处**：CNB 原生不支持 Webhook，所以腾讯云那边**只能绑 GitHub**
-才有推送即部署。若将来要从 CNB 触发，必须在仓库根目录放 `.cnb.yml` 配置
-[CNB Webhook 插件](https://cnb.cool/cnb/plugins/cnbcool/webhook)。当前没配，
-CNB 仅作为源码镜像。
+### 方式 A'：CNB 流水线 Webhook 触发（配合 EdgeOne Makers 模板）
+
+仓库根目录的 `.cnb.yml` 照抄
+[EdgeOne-Makers-Webhook 模板](https://cnb.cool/EdgeOne-Makers/EdgeOne-Makers-Webhook)：
+push 到 `main` 时 CNB 跑 `notify` 阶段，用 `cnbcool/webhook` 插件向固定地址
+`https://api.edgeone.ai/eo/pages/hook/cnb` 发一个 `POST`，把 CNB 内置变量
+（仓库名、分支、commit、构建人等）以 JSON 交给 EdgeOne，EdgeOne 自己拉代码构建。
+**Webhook 地址是平台指定的，不可改。**
+
+因此一次 `git push origin main`（双推 GitHub + CNB）会同时命中方式 A 与方式 A'，
+任一条通都能发布；两者都在时是一次 push 触发两次构建，产物一致，无副作用。
+
+CNB 侧流水线记录：仓库 → **Events** 标签页。`notify` 阶段变绿即表示 EdgeOne 已收
+到触发请求（端点对未登记仓库同样返回 `{"code":0,"message":"ok"}`，所以绿灯只
+保证投递成功，是否真的重新构建以站点 `Last-Modified` 变化为准）。
+
+想换触发分支就改 `.cnb.yml` 顶部的 `main`，但 `settings.urls` 保持原样。
 
 ## 相关仓库
 
