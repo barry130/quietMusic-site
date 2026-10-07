@@ -1,0 +1,15 @@
+{
+  "name": "qt-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "轻听（QuietMusic）官方站点 —— 功能介绍 / 下载安装 / 开发指南 / 问题答疑 / 用户协议 / 隐私政策",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4"
+  }
+}
