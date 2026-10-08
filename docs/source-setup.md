@@ -9,7 +9,7 @@
 ::: tip 一句话流程
 **首页「去安装」→ 音源包管理 → 从链接安装**（或检查更新 / 选本地文件）→ 装完自动冒烟自检 → 生效。
 
-只想照着做一遍，直接跳到[手机端图文教程](#三、手机端图文教程-从链接安装)；
+只想照着做一遍，直接跳到图文教程：[手机端](#三、手机端图文教程-从链接安装) / [桌面端](#四、桌面端图文教程-从链接安装)；
 不想找链接，直接复制[官方音源直链](#二、官方音源直链-可直接复制)。
 :::
 
@@ -32,7 +32,8 @@
 
 ## 二、官方音源直链（可直接复制）
 
-下面两条就是**当前官方音源包**的直链，按「[从链接安装](#三、手机端图文教程-从链接安装)」粘贴进输入框即可。
+下面两条就是**当前官方音源包**的直链，按图文教程（[手机端](#三、手机端图文教程-从链接安装) /
+[桌面端](#四、桌面端图文教程-从链接安装)）粘贴进输入框即可。
 数据包和播放包**两个都要装**，点各自代码框右上角的复制按钮**分别单独复制**，别复制混了。
 
 > 链接挂在 CNB Release 上，**官方发新版本后旧链接会失效（404）**，到时回本页复制新的即可。
@@ -106,12 +107,50 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ::: tip 装完怎么确认
 安装后会**自动冒烟自检**，通过即生效。列表里能看到「官方数据包」与「官方播放包」都处于
-**生效中**，就说明装好了。详见[怎么确认装好了](#八、怎么确认装好了)。
+**生效中**，就说明装好了。详见[怎么确认装好了](#九、怎么确认装好了)。
 :::
 
 ---
 
-## 四、三种安装方式
+## 四、桌面端图文教程：从链接安装
+
+Windows 桌面端的路径与手机端完全一致，只是入口文案与版式不同：首页按钮叫**「去设置页安装」**，
+安装区在**「设置 → 音源包」**页签的最下方。同样**数据包与播放包各装一次**。
+
+链接直接复制[上面那两条](#二、官方音源直链-可直接复制)，两个包分别单独复制，别粘混了。
+
+<div class="shot-grid desktop">
+
+<figure class="shot">
+<img src="/source-setup/desktop-1-install-prompt.png" alt="桌面端首页弹窗「安装数据包，使用在线功能」，蓝色按钮写着「去设置页安装」" loading="lazy" />
+<figcaption><b>① 首页点「去设置页安装」</b>未装数据包时首页会弹窗说明：搜索 / 歌单 / 歌词 / 封面由数据包提供，应用未内置，需自行安装一次，未安装不影响本地音乐播放。点蓝色按钮直接进设置页。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/desktop-2-source-tab.png" alt="桌面端「设置 · 音源包」页，红框标出最下方的「安装音源包」区域，含「从链接」「从本地文件」两个按钮与链接输入框" loading="lazy" />
+<figcaption><b>② 找到「安装音源包」区域</b>在「设置 → 音源包」页签向下滑到最底部（图中红框）。左侧「从链接」已选中，把 https 直链粘进输入框，再点「安装」。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/desktop-3-meta-pack.png" alt="桌面端安装确认弹窗：类型 数据包、名称 官方数据包、包 id meta-official、来源 meta-bundle.js，并标注「官方签名校验通过」" loading="lazy" />
+<figcaption><b>③ 安装数据包</b>确认弹窗会列出类型 / 名称 / 版本 / 包 id / 来源，并标注「官方签名校验通过（ed25519，与官方发布密钥匹配）」，核对无误后点「安装」。</figcaption>
+</figure>
+
+<figure class="shot">
+<img src="/source-setup/desktop-4-play-pack.png" alt="桌面端安装确认弹窗：类型 播放包、名称 官方播放包、包 id play-official、来源 play-bundle.js，并标注「官方签名校验通过」" loading="lazy" />
+<figcaption><b>④ 安装播放包</b>再用同样方式粘贴播放包链接。两个都装完后，左上角的「音源」会从「未知」变成实际音源名，在线搜索与在线播放同时可用。</figcaption>
+</figure>
+
+</div>
+
+::: tip 桌面端与手机端只是入口不同
+两端的安装区界面、确认弹窗字段、签名校验与冒烟自检**完全一致**——同一份音源包，两端通用。
+手机端的五步截图见[上一节](#三、手机端图文教程-从链接安装)。
+:::
+
+---
+
+## 五、三种安装方式
 
 上面演示的是**方式二（https 直链）**。三种方式任选其一即可，效果完全一样。
 
@@ -146,7 +185,7 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ---
 
-## 五、兼容 LX 音源脚本
+## 六、兼容 LX 音源脚本
 
 这是轻听音源体系里最实用的一点：**播放包内置一个 LX 自定义源脚本宿主**。
 
@@ -179,7 +218,7 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ---
 
-## 六、设置默认音源与音质
+## 七、设置默认音源与音质
 
 装好包之后，在「设置」里还有两处需要调：
 
@@ -199,7 +238,7 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ---
 
-## 七、启用、切换与卸载
+## 八、启用、切换与卸载
 
 - **启用**：多个播放包并存时，点一下「启用」即可热切换，立即重新做一次取链冒烟自检
 - **卸载**：列表里删除即可
@@ -207,7 +246,7 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ---
 
-## 八、怎么确认装好了
+## 九、怎么确认装好了
 
 安装或启用播放包后，客户端会自动做一次**冒烟自检**：拿真实歌曲调用取链 + Range 预检。
 
@@ -219,7 +258,7 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
 
 ---
 
-## 九、装不上 / 不生效怎么办
+## 十、装不上 / 不生效怎么办
 
 | 现象 | 先试什么 |
 |---|---|
@@ -347,5 +386,15 @@ https://cnb.cool/canace/qt-sources-sdk/-/releases/download/2026100703/play-bundl
   display: block;
   margin-bottom: 2px;
   color: var(--vp-c-text-1);
+}
+
+/* 桌面端截图是 16:10 横图，手机端的 320px 窄栏会把界面缩得看不清，
+   这里放开到整栏宽。 */
+.shot-grid.desktop {
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+}
+
+.shot-grid.desktop .shot img {
+  max-width: 100%;
 }
 </style>
