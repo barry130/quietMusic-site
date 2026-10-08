@@ -39,8 +39,7 @@
 官方播放包里内置了一个 **LX 自定义源脚本宿主**，这类脚本**无需改动即可被装载**，
 并且在 Android 与 Windows 两端行为一致。
 
-宿主提供的兼容面（实现位于 `qt-sources` 的 `src/schemes/lx-host/`，
-公开的类型声明见 [`qt-sources-sdk` 的 `docs/HOST-API.md`](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/docs/HOST-API.md)）：
+宿主提供的兼容面（公开的类型声明见 [`qt-sources-sdk` 的 `docs/HOST-API.md`](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/docs/HOST-API.md)）：
 
 | 提供物 | 说明 |
 |---|---|
@@ -59,8 +58,8 @@
    `fetch` / `XMLHttpRequest` / `WebSocket` / `Worker` / 文件系统全是 `undefined`。
 :::
 
-具体装载哪些脚本、按什么规则打包，见 [qt-sources（音源包工程）](/dev/sources)
-的「LX 脚本宿主」一节；面向使用者的说明见 [如何设置音源](/source-setup)。
+具体装载哪些脚本、按什么规则打包，属于官方包的构建细节；面向使用者的说明见
+[如何设置音源](/source-setup)。
 
 ---
 
@@ -401,6 +400,5 @@ Windows 端引擎面板可见。别把它当持久化日志用。
 ## 相关
 
 - [音源包机制](/dev/source-pack) —— 包模型、签名、安全扫描的完整说明
-- [qt-sources（音源包工程）](/dev/sources) —— 官方包的构建流水线与 LX 脚本宿主
 - [如何设置音源](/source-setup) —— 面向使用者的安装与换源说明
 - [反馈与贡献](/feedback) —— 提 Issue / PR 的双渠道入口

@@ -167,7 +167,7 @@ Android 端在 `qt-js-engine`（系统 WebView 的 V8）里执行音源包，契
 - 官方包身份靠 ed25519 尾部签名块（`__QT_SIGN__`）+ 内置公钥硬校验，与安装渠道无关
 - 更新发现走「各包自述 `updateUrl` 探测 + astral manifest」两条路，按包独立节流 4 小时；**只提
   示不安装**：确认后下载 → 校验头 → 替换 → 生效，失败回滚 `.prev`
-- 播放包里内含 **LX 自定义源脚本宿主**（实现在 `qt-sources`，两端共用），
+- 播放包里内含 **LX 自定义源脚本宿主**，两端共用同一份产物，
   符合该协议的脚本无需改动即可装载，安卓侧与 Windows 侧跑同一份脚本、行为一致
 
 启动时 `App.uvue` 的 `onLaunch` 先 `applyLegacyInsets()`（三星 One UI 首屏竞态）、

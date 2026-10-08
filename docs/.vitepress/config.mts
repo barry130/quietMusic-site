@@ -56,7 +56,6 @@ export default defineConfig({
             { text: "音源包机制", link: "/dev/source-pack" },
             { text: "qt-pc（Windows）", link: "/dev/pc" },
             { text: "qt-uniappx（Android）", link: "/dev/mobile" },
-            { text: "qt-sources（音源包工程）", link: "/dev/sources" },
             { text: "音源包作者指南", link: "/dev/pack-authoring" },
           ],
         },

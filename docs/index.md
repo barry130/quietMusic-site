@@ -128,7 +128,6 @@ features:
 |---|---|---|---|
 | **qt-uniappx** | Android / iOS | UniAppX（UVue + UTS）客户端，含音频内核、悬浮窗歌词、音源包引擎等原生插件 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
 | **qt-pc** | Windows | Tauri 2 + React 19 + Rust 桌面端 | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources** | 平台无关 | 音源包工程：各平台取链实现与打包流水线，产物服务两端 | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
 | **qt-sources-sdk** | 平台无关 | 音源包开发的公开面：类型契约、宿主 API、作者指南与示例包 | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
 
 **仓库边界是清晰的**：客户端仓库里没有任何第三方平台取链实现。
@@ -158,8 +157,8 @@ features:
 
 ### 开发者
 
-想跑起来改代码，看 [开发指南](/dev/)。三个仓库各有专页：
-[qt-pc](/dev/pc) · [qt-uniappx](/dev/mobile) · [qt-sources](/dev/sources)。
+想跑起来改代码，看 [开发指南](/dev/)。两个客户端各有专页：
+[qt-pc](/dev/pc) · [qt-uniappx](/dev/mobile)。
 
 </div>
 

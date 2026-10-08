@@ -7,24 +7,22 @@
 ## 仓库与边界
 
 代码托管在 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
-音源工程之外，类型契约与宿主 API 另拆了一个接口仓 `qt-sources-sdk`。
+音源包的取链实现不在客户端仓库里；播放包作者需要的类型契约、宿主 API 与示例包
+单独拆在接口仓 `qt-sources-sdk`。
 
 | 仓库 | 面向平台 | 技术栈 | 产物 | 仓库 |
 |---|---|---|---|---|
 | **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
 | **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources** | 平台无关 | TypeScript + Vite 库模式，**零运行时依赖** | `meta-bundle.js`、`play-bundle.js` | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
 | **qt-sources-sdk** | 平台无关 | 纯类型 + 文档，MIT | `contract.ts`、`host-api.ts`、作者指南、示例包 | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
 
-`qt-sources` 里装着各平台取链实现与打包流水线；`qt-sources-sdk` 是播放包作者
-真正需要的部分——类型契约、宿主 API、[作者指南](/dev/pack-authoring)与示例包。
-
-关键的架构约定：**音源实现只存在于 qt-sources**。
+播放包作者真正需要的是 `qt-sources-sdk`——类型契约、宿主 API、
+[作者指南](/dev/pack-authoring)与示例包。官方包的取链实现不在任何公开仓库里，
 两端都不内置任何第三方取链逻辑，只在运行时装载音源包。
 
 ```
-        qt-sources（平台无关 TS）
-                 │  pnpm build
+        音源包源码（平台无关 TS）
+                 │  构建
                  ▼
     ┌────────────────────────────┐
     │ meta-bundle.js  (~229 KB)  │  数据面：搜索/歌单/歌词/封面/榜单
@@ -38,17 +36,17 @@
 
 两个包的产出格式不同，这是有意的：
 
-- `meta-bundle.js` 以 **ESM** 产出（`format: "es"`，入口 `meta-entry.ts`），PC 侧直接
+- `meta-bundle.js` 以 **ESM** 产出（`format: "es"`），PC 侧直接
   `import()`；负责搜索、歌单、专辑、歌手、榜单、歌词、封面等数据面接口。
-- `play-bundle.js` 以 **IIFE** 产出（`format: "iife"`，全局名 `qtPlayBundle`，入口
-  `play-entry.ts`）。这是硬要求：它由数据包侧的 `installPlayPack(code)` 用
+- `play-bundle.js` 以 **IIFE** 产出（`format: "iife"`，全局名 `qtPlayBundle`）。
+  这是硬要求：它由数据包侧的 `installPlayPack(code)` 用
   `new Function(code)()` 求值，顶层不能出现 `import` / `export`。
 - 两者 target 都是 `es2020`（部分混淆脚本用到 BigInt），且**不压缩**（`minify: false`）。
 - 构建期还会追加身份头与签名块，宿主不执行包体就能读出身份。
 
 ### 为什么要平台无关
 
-`qt-sources/src/` 的代码**不得** import 主应用或 Tauri 专有 API——
+包侧代码**不得** import 主应用或 Tauri 专有 API——
 bundle 要能在 QuickJS（安卓）、JavaScriptCore（iOS）、V8（PC 引擎页）里原样跑。
 当前它的对外依赖数是 **0**（`package.json` 没有 `dependencies`）。宿主能力一律靠注入：
 
@@ -58,7 +56,7 @@ bundle 要能在 QuickJS（安卓）、JavaScriptCore（iOS）、V8（PC 引擎�
 | 平台号（`platform`） | 同上 | `1103`（Windows） | `1101`（Android）/ `1102`（iOS） |
 | chain.json 覆盖层 | `setChainOverlayReader(reader)` | 引擎页 → `invoke("source_chain_overlay")` | 不注入，宿主调 `__qtEntries.loadChain(json)` |
 
-历史上 `chain-store.ts` 里曾直接 `invoke("source_chain_overlay")`，是 bundle 里唯一的
+包侧早期曾在链路配置模块里直接 `invoke("source_chain_overlay")`，是 bundle 里唯一的
 Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物。
 
 ### 包的身份头与签名
@@ -83,7 +81,6 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 | 包模型、安装与更新流程、签名与安全闸门 | [音源包机制](/dev/source-pack) |
 | 编译、调试、打包 Windows 桌面端 | [qt-pc（Windows）](/dev/pc) |
 | 在 HBuilderX 里跑 Android / iOS 端 | [qt-uniappx（Android）](/dev/mobile) |
-| 改音源实现、跑构建流水线与守卫 | [qt-sources（音源包工程）](/dev/sources) |
 | 从零写一个第三方音源包 | [音源包作者指南](/dev/pack-authoring) |
 
 ---
@@ -92,10 +89,9 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 
 | 目标 | 需要准备 |
 |---|---|
-| 通用 | Node.js ≥ 20、pnpm（qt-pc / qt-sources 的脚本都按 pnpm 写；qt-uniappx 用 npm） |
+| 通用 | Node.js ≥ 20、pnpm（qt-pc 的脚本按 pnpm 写；qt-uniappx 用 npm） |
 | qt-pc | Windows 10 / 11、WebView2 Runtime（Win11 自带）、Rust ≥ 1.87（edition 2021，含 MSVC 工具链） |
 | qt-uniappx | HBuilderX 5.x 或更高版本、Android SDK 或 iOS 工具链、真机 / 模拟器 |
-| qt-sources | 只需 Node.js；`devDependencies` 仅 esbuild / typescript / vite / vitest，无原生依赖 |
 
 ::: warning qt-uniappx 必须用自定义基座
 标准基座不含 `qt-app-native`、`qt-audio-player`、`qt-js-engine`、`qt-stat` 这四个 UTS 原生
@@ -121,23 +117,10 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 | `pnpm test` | 前端单测；前置一次 `config:check` |
 | `pnpm config:sync` / `pnpm config:check` | 写入 / 校验派生配置文件 |
 
-### qt-sources
-
-| 命令 | 作用 |
-|---|---|
-| `pnpm build` | 完整构建流水线（**带守卫**，见「行为准则」），产出两个 bundle |
-| `pnpm typecheck` / `pnpm test` | 类型检查 / 单测 |
-| `pnpm gen:vendor` | 从本机第三方脚本原文重新生成 vendored 片段 |
-| `pnpm check:bodies` | 单独跑脚本体沙箱守卫 |
-| `pnpm smoke:bundle` / `pnpm smoke:entries` | 产物冒烟（bundle 与入口自注册各一项） |
-| `pnpm verify:expr` | 表达式校验脚本 |
-| `pnpm check:sdk` | 校验 `src/contract.ts`、作者指南与示例包与公开仓 `qt-sources-sdk` 逐字一致（漂移即失败） |
-
 ### qt-sources-sdk
 
 纯类型 + 文档的公开仓（MIT），`package.json` 为 private、不发布 npm。
-它只被构建仓单向引用：构建仓里同名文件是它的副本，`pnpm check:sdk` 保证两者不漂移；
-需要改公开面时改 SDK 仓，再回构建仓 `pnpm sync:sdk` 回灌副本。
+播放包作者只需要它：类型契约、宿主 API 声明、[作者指南](/dev/pack-authoring)与示例包。
 
 ### qt-uniappx
 
@@ -157,7 +140,7 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 |---|---|
 | qt-pc | `app.config.json` 的 `version.name` / `version.code` |
 | qt-uniappx | `manifest.json` 的 `versionName` / `versionCode` |
-| qt-sources | `sources.config.json` 的 `packs.meta` / `packs.play` |
+| 音源包 | 由包的构建工程在构建配置里定义（`packs.meta` / `packs.play`） |
 
 具体取值以各仓库文件为准，这里不抄一份（抄了就会过期）。
 
@@ -189,7 +172,7 @@ pnpm config:check    # 只校验（已挂进 build / test：手改派生文件�
 - `qt-pc`：只改 `app.config.json` 的 `version.name` 与 `version.code` 两行，
   二者自洽性由单测校验
 - `qt-uniappx`：`manifest.json` 的 `versionName` / `versionCode`
-- `qt-sources`：音源包的 `versionCode` **必须单调递增**，格式为 `YYYYMMDD` + 2 位序号，
+- 音源包：`versionCode` **必须单调递增**，格式为 `YYYYMMDD` + 2 位序号，
   且不得低于已发布的最大值。忘了 +1，用户永远收不到更新
 
 ### 本机命令可能被 pnpm 拦
@@ -208,11 +191,6 @@ node node_modules/typescript/bin/tsc --noEmit
 
 ## 行为准则
 
-- **不要绕过 qt-sources 的构建守卫**。其中两步是线上事故的直接产物：
-  `restore-lx-bodies`（把混淆脚本体恢复为逐字节原文）与 `check-lx-bodies`
-  （worker 沙箱里逐个执行脚本体，看门狗拦挂死）。跳过会导致脚本自校验被破坏 →
-  同步忙循环挂死。敏感词闸门同样不能关。
-- **不要在 `qt-sources/src/` 里 import 宿主代码**。当前对外依赖数是 0，请保持。
 - **不要手写派生文件**。`app_config.rs` / `tauri.conf.json` / `Cargo.toml` 等由
   同步器生成，手改会被 `config:check` 拦下。
 - **改 UTS 插件后必须重建基座**（云端打包 / 自定义基座），标准基座不含这些插件。

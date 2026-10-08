@@ -35,7 +35,6 @@ docs/
     ├── index.md                开发指南总览
     ├── pc.md                   qt-pc（Windows）
     ├── mobile.md               qt-uniappx（Android）
-    ├── sources.md              qt-sources（音源包工程）
     ├── source-pack.md          音源包机制
     └── pack-authoring.md       音源包作者指南
 docs/.vitepress/config.mts      站点配置
@@ -160,7 +159,6 @@ CNB 侧流水线记录：仓库 → **Events** 标签页。`notify` 阶段变绿
 |---|---|
 | [qt-uniappx](https://github.com/barry130/qt-uniappx) | Android / iOS 客户端 |
 | [qt-pc](https://github.com/barry130/qt-pc) | Windows 桌面端 |
-| [qt-sources](https://github.com/barry130/qt-sources) | 音源包工程 |
 
 ## 许可
 

@@ -119,9 +119,9 @@ label `source-engine`，加载 `qtres://localhost/engine/index.html`，360 × 24
 Rust 广播 `source-pack-changed` 后引擎页热切换并跑一次真实取链冒烟；引擎页的
 `window.fetch` 被接管，只放行同源站内路径与 Tauri IPC 端点。
 
-播放包内含 **LX 自定义源脚本宿主**（实现在 `qt-sources`，与 Android 端共用同一份产物），
-符合 LX 自定义源协议的脚本无需改动即可装载，两端行为一致。宿主实现、脚本注册表与
-两条构建守卫见 [qt-sources（音源包工程）](/dev/sources) 的「LX 脚本宿主」。
+播放包内含 **LX 自定义源脚本宿主**，与 Android 端共用同一份产物，
+符合 LX 自定义源协议的脚本无需改动即可装载，两端行为一致。宿主兼容面与
+两条构建守卫见 [音源包机制](/dev/source-pack)。
 
 ## HTTP Range 流式播放
 
@@ -230,5 +230,4 @@ Release 只托管安装包。
 
 - 音源包的模型、签名与安装流程 → [音源包机制](/dev/source-pack)
 - 自己写一个音源包 → [音源包作者指南](/dev/pack-authoring)
-- 改音源实现本体 → [qt-sources（音源包工程）](/dev/sources)
 - 打包失败、播放异常 → [问题答疑](/faq)

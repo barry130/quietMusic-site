@@ -17,7 +17,6 @@ Issue 与 Pull Request 都在这里提。
 |---|---|
 | **qt-uniappx**（Android / iOS 客户端） | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
 | **qt-pc**（Windows 桌面端） | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources**（音源包工程：取链实现与打包） | [cnb.cool/canace/qt-sources](https://cnb.cool/canace/qt-sources) |
 | **qt-sources-sdk**（音源包公开面：契约 / 宿主 API / 指南 / 示例） | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
 | **quietMusic-site**（本站） | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) |
 
@@ -65,7 +64,7 @@ Issue 与 Pull Request 都在这里提。
 
 ## 代码贡献（Pull Requests）
 
-欢迎提交改进。四个仓库都接受 PR：
+欢迎提交改进。三个仓库都接受 PR：
 
 | 仓库 | Pull requests |
 |---|---|
@@ -79,7 +78,7 @@ Issue 与 Pull Request 都在这里提。
 1. **先开一个 Issue 说清楚你要做什么**——尤其是较大的改动。
    避免你写完了才发现方向不合，或者已经有人在做同一件事。
 2. **读对应仓库的说明与文档**：移动端 → [qt-uniappx（Android）](/dev/mobile)，
-   桌面端 → [qt-pc（Windows）](/dev/pc)，音源包 → [qt-sources](/dev/sources)，
+   桌面端 → [qt-pc（Windows）](/dev/pc)，音源包 → [音源包作者指南](/dev/pack-authoring)，
    开发总览 → [开发指南](/dev/)。
 3. **保持改动聚焦**：一个 PR 解决一件事。顺手的大重构请单独提。
 
@@ -87,16 +86,13 @@ Issue 与 Pull Request 都在这里提。
 
 这些不是风格偏好，是仓库的构建门槛，**提交前请务必满足**：
 
-- **`qt-sources/src/` 不得 import 主应用或任何宿主 API**。
-  这一层要保持**零运行时依赖**，产物才能在两端原样跑。当前对外依赖数是 0，请保持
-- **不要绕过 qt-sources 的构建守卫**。其中两步是线上事故的直接产物：一步把混淆脚本体
-  恢复为逐字节原文，另一步在沙箱里逐个执行脚本体、用看门狗拦挂死。跳过它们会导致
-  脚本自校验被破坏，进而在真机上死循环
 - **不要手写派生文件**。桌面端的版本号 / 产品名 / 应用 ID 只在唯一配置源里改，
   其余文件由同步脚本生成；手改会被校验拦下
 - **移动端改完 `.uvue` / UTS 后跑一次静态检查**，并确认图标定义与引用一一对应
 - **音源包的安全规则表两端逐条一致**（Android 与 Windows 各一份实现），改一边必须同步另一边，
   否则同一个包会在两端得到不同裁决
+- **不要绕过官方包的构建守卫**。逐字节保全与沙箱挂死看门狗是线上事故的直接产物，
+  跳过的后果是脚本自校验被破坏、进而在真机上死循环
 
 ### PR 描述里写清楚
 
