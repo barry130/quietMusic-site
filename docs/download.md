@@ -1,8 +1,8 @@
 # 下载安装
 
-::: danger 下载地址待补充
-本页的 Android 直链与 Windows 直链目前是**占位符**，正式发布前会替换为真实地址。
-在那之前，请优先使用**应用内的更新检查**（Android）与 **GitHub Release**（Windows）。
+::: tip 下载地址
+Windows 安装包已在 **CNB Release** 上线，**三架构直链**见下方「Windows」段，点击即开始下载。
+Android 暂未提供公开直链，仍走**应用内的更新检查**（装好任一版本后 →「我的」→「检查更新」）。
 :::
 
 ::: tip 装完之后
@@ -20,7 +20,7 @@
 | 产品名 | 轻听 | QuietMusic（显示名「轻听」） |
 | 安装形态 | APK | NSIS 安装包 `.exe` |
 | 系统要求 | Android（建议 8.0 及以上） | Windows 10 / 11（需 WebView2） |
-| 获取方式 | 见下方 Android 段 | 见 [GitHub Release](https://github.com/barry130/qt-pc/releases) |
+| 获取方式 | 见下方 Android 段 | 见下方 [Windows 三架构直链](#windows) |
 
 两个客户端共用同一份音源包产物——**一份实现两端生效**。
 
@@ -32,6 +32,12 @@
 客户端会向后端查询当前正式版 / 测试版，弹窗后直链下载并自动安装。
 
 首次安装（还没装过任何版本）才需要走本页的直链。
+
+::: warning Android 暂无公开直链
+CNB 上的 Android Release（`QuietMusic_Android_3.0.7`）目前没有可下载的 APK 资产，
+本页不给 APK 直链——给了就是 404。已经装过轻听的用户走上面的「检查更新」即可；
+首次安装请先用 Windows 版，或等本页补充。
+:::
 
 ### 安装步骤
 
@@ -63,9 +69,30 @@ Android 9+ 默认禁止明文流量，不放行就会直接报 `CLEARTEXT not pe
 
 ## Windows
 
-从 [qt-pc 的 GitHub Release](https://github.com/barry130/qt-pc/releases) 下载
-`QuietMusic_<版本>_x64-setup.exe`；也可以在
-[CNB 镜像仓库](https://cnb.cool/canace/qt-pc)查看代码与构建记录。
+安装包托管在 **CNB Release**，点下面的按钮直接下载，不用进 Release 页挑文件。
+
+当前版本 **v1.1.1**（对应 `app.config.json` 的 `version.name`）：
+
+| 架构 | 适用机器 | 下载 |
+|---|---|---|
+| **x64** | 绝大多数 64 位 Windows（Intel / AMD） | [下载 x64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_x64-setup.exe) |
+| **ARM64** | ARM 架构 Windows（如骁龙 X 系列笔记本） | [下载 ARM64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_arm64-setup.exe) |
+| **x86** | 32 位老机器（装不了 64 位系统） | [下载 x86 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_x86-setup.exe) |
+
+::: tip 怎么确认自己的架构
+`Win + R` → 输入 `msinfo32` → 看「系统类型」一行：
+
+- `基于 x64 的处理器` → 下 **x64**
+- `基于 ARM 的处理器` → 下 **ARM64**
+- `基于 x86 的处理器` → 下 **x86**
+:::
+
+::: details 找不到合适版本 / 想看全部文件
+去 [qt-pc 的 CNB Release 页](https://cnb.cool/canace/qt-pc/-/releases)，
+或看 [qt-pc 仓库](https://cnb.cool/canace/qt-pc)的构建记录。
+每个安装包旁边都有同名 `.exe.sig`（88 字节）——**应用内更新强制验签**，
+自己手动更新时要把 `.exe` 与 `.exe.sig` 放同一目录。
+:::
 
 ### 安装步骤
 
@@ -74,11 +101,11 @@ Android 9+ 默认禁止明文流量，不放行就会直接报 `CLEARTEXT not pe
 3. 首次启动后进入「设置 → 音源包」安装音源包（图文步骤见
    [桌面端图文教程](/source-setup#四、桌面端图文教程-从链接安装)）
 
-::: warning 安装包必须带签名
+::: warning 应用内更新强制验签
 应用内更新在安装前会**强制验签**：没有同名 `.sig` 或验签失败的包**一律拒绝安装**。
-从 Release 下载时请把 `.exe` 与 `.exe.sig` 放在同一目录。
+用上表的直链手动更新时，请把 `.exe` 与同名 `.exe.sig` 放同一目录。
 
-校验命令（仓库内脚本）：
+校验命令（qt-pc 仓库内脚本）：
 
 ```bash
 node scripts/update-sign.mjs sign "src-tauri\target\release\bundle\nsis\QuietMusic_<版本>_x64-setup.exe"

@@ -110,7 +110,7 @@ ut / app_version）与反馈提交（`sys_feedback` 的 platform / device / os�
 绕过 `http.ts` 直接用 `uni.request` 的调用点（`services/source-update.uts`、
 `uni_modules/qt-stat` 上报器）必须自己调 `mergeClientHeaders()`；反过来，第三方直链与音源加速
 探测**不要**带这些头。应用自身升级在 `services/upgrade.ts`：`checkAppUpdate` /
-`checkOfficialVersion`（校验发行来源）/ `isGithub` 加速探测 / `md5` 校验；
+`checkOfficialVersion`（校验发行来源）/ 下载加速前缀探测（`qt_github_accel`）/ `md5` 校验；
 `channel` 分 `stable|beta`，`updateType` `1` 弹窗、`2` 红点、`3` 无提示。
 
 ## UVue 开发约束

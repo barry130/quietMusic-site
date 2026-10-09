@@ -126,7 +126,8 @@ git remote add origin https://github.com/barry130/quietMusic-site.git
 git remote set-url --add --push origin https://cnb.cool/canace/quietMusic-site.git
 ```
 
-一次 `git push origin main` 会同时推到两个远端。GitHub 在本机需要走代理、
+一次 `git push origin main` 会同时推到两个远端。**站内所有对外链接（下载直链、源码、
+提交反馈）都指向 CNB**，GitHub 这条仅作为备份远端。GitHub 在本机需要走代理、
 CNB 需要直连，可以按远端单独配：
 
 ```bash
@@ -157,8 +158,8 @@ CNB 侧流水线记录：仓库 → **Events** 标签页。`notify` 阶段变绿
 
 | 仓库 | 内容 |
 |---|---|
-| [qt-uniappx](https://github.com/barry130/qt-uniappx) | Android / iOS 客户端 |
-| [qt-pc](https://github.com/barry130/qt-pc) | Windows 桌面端 |
+| [qt-uniappx](https://cnb.cool/canace/qt-uniappx) | Android / iOS 客户端 |
+| [qt-pc](https://cnb.cool/canace/qt-pc) | Windows 桌面端 |
 
 ## 许可
 

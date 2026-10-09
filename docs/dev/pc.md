@@ -164,8 +164,10 @@ Get-Process quietmusic -ErrorAction SilentlyContinue | Stop-Process -Force
 
 ## 发版与签名
 
-推送 `v*` 标签触发 `.github/workflows/release.yml`：构建 NSIS → ed25519 签名并自验 → 创建
-GitHub Release；普通 push 只跑 `ci.yml`。
+推送 `v*` 标签触发 `.github/workflows/release.yml`（GitHub）与 `.cnb.yml` 的 `v*` tag 流水线
+（CNB，三架构交叉编译）：构建 NSIS → ed25519 签名并自验 → 创建 Release。
+**安装包以 CNB Release 为准**（站内下载直链都指向它），GitHub Release 作为备份。
+普通 push 只跑 `ci.yml`。
 
 ```bash
 git tag v<版本>
@@ -186,8 +188,8 @@ node scripts/update-sign.mjs verify <exe 路径>
 对 `.sig` 不可达时自动降级回原始直链。
 :::
 
-发版后把「下载地址 / MD5 / fileSize」填进后端管理后台的更新记录：应用内更新检查走后端，GitHub
-Release 只托管安装包。
+发版后把「下载地址 / MD5 / fileSize」填进后端管理后台的更新记录：应用内更新检查走后端，
+CNB Release 只托管安装包。
 
 ## 安全边界
 
