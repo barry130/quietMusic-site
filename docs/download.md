@@ -1,8 +1,9 @@
 # 下载安装
 
 ::: tip 下载地址
-Windows 安装包已在 **CNB Release** 上线，**三架构直链**见下方「Windows」段，点击即开始下载。
-Android 暂未提供公开直链，仍走**应用内的更新检查**（装好任一版本后 →「我的」→「检查更新」）。
+Windows 三架构安装包与 Android APK 均已在 **CNB Release** 上线，
+**直链见下方各段，点击即开始下载**。
+Android 用户更推荐装好后走**应用内的更新检查**（「我的」→「检查更新」）。
 :::
 
 ::: tip 装完之后
@@ -20,7 +21,7 @@ Android 暂未提供公开直链，仍走**应用内的更新检查**（装好�
 | 产品名 | 轻听 | QuietMusic（显示名「轻听」） |
 | 安装形态 | APK | NSIS 安装包 `.exe` |
 | 系统要求 | Android（建议 8.0 及以上） | Windows 10 / 11（需 WebView2） |
-| 获取方式 | 见下方 Android 段 | 见下方 [Windows 三架构直链](#windows) |
+| 获取方式 | 见下方 [Android 直链](#android) | 见下方 [Windows 三架构直链](#windows) |
 
 两个客户端共用同一份音源包产物——**一份实现两端生效**。
 
@@ -28,16 +29,23 @@ Android 暂未提供公开直链，仍走**应用内的更新检查**（装好�
 
 ## Android
 
-**推荐做法**：打开已安装的轻听 → 「我的」→「检查更新」。
-客户端会向后端查询当前正式版 / 测试版，弹窗后直链下载并自动安装。
+**当前版本**：Android 3.0.7
+
+| | |
+|---|---|
+| 直接下载 | [下载 QuietMusic_Android_3.0.7.apk](https://cnb.cool/canace/qt-uniappx/-/files/haujchDQSv5JvJpNwARPkB/a09bc661-aff5-41f7-bcf8-d2e31f1fe3f2/QuietMusic_Android_3.0.7.apk)（28.9 MB） |
+| 包名 / 应用 ID | `com.qt.app` |
+| 官方 Release 页 | [qt-uniappx 的 CNB Release](https://cnb.cool/canace/qt-uniappx/-/releases) |
+
+**更推荐的做法**：打开已安装的轻听 →「我的」→「检查更新」。
+客户端会向后端查询当前正式版 / 测试版，弹窗后直链下载并自动安装——
+不用自己挑文件，也不用来这个页面。
+
+::: warning 首次安装只在这条路上走
+应用内的更新检查要求**已经装过至少一个版本**，所以本页的 APK 直链只用于首次安装。
+:::
 
 首次安装（还没装过任何版本）才需要走本页的直链。
-
-::: warning Android 暂无公开直链
-CNB 上的 Android Release（`QuietMusic_Android_3.0.7`）目前没有可下载的 APK 资产，
-本页不给 APK 直链——给了就是 404。已经装过轻听的用户走上面的「检查更新」即可；
-首次安装请先用 Windows 版，或等本页补充。
-:::
 
 ### 安装步骤
 
