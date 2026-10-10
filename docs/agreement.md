@@ -36,9 +36,9 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 
 | 仓库 | 内容 | 许可 |
 |---|---|---|
-| qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/main/LICENSE-SUPPLEMENTARY.md) |
-| qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-pc/-/blob/main/LICENSE-SUPPLEMENTARY.md) |
-| qt-sources-sdk | 音源包开发的公开面：类型契约、宿主 API、作者指南、示例包 | [MIT](https://cnb.cool/canace/qt-sources-sdk/-/blob/main/LICENSE) |
+| qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/master/LICENSE-SUPPLEMENTARY.md) |
+| qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-pc/-/blob/master/LICENSE-SUPPLEMENTARY.md) |
+| qt-sources-sdk | 音源包开发的公开面：类型契约、宿主 API、作者指南、示例包 | [MIT](https://cnb.cool/canace/qt-sources-sdk/-/blob/master/LICENSE) |
 
 仓库入口：[CNB](https://cnb.cool/canace)，
 完整列表与反馈渠道见[反馈与贡献](/feedback)。
@@ -163,5 +163,5 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 
 ## 附：与开源许可证的关系
 
-本文件是客户端仓库所附[补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/main/LICENSE-SUPPLEMENTARY.md)
+本文件是客户端仓库所附[补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/master/LICENSE-SUPPLEMENTARY.md)
 在站点上的表述，与 Apache-2.0 许可证共同生效；如冲突，以补充条款为准。
