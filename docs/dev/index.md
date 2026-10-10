@@ -82,6 +82,7 @@ Tauri 依赖；改成注入式之后，两端才能真正共用同一份产物�
 | 编译、调试、打包 Windows 桌面端 | [qt-pc（Windows）](/dev/pc) |
 | 在 HBuilderX 里跑 Android / iOS 端 | [qt-uniappx（Android）](/dev/mobile) |
 | 从零写一个第三方音源包 | [音源包作者指南](/dev/pack-authoring) |
+| 手上有洛雪源脚本，想打包成播放包 | [洛雪脚本打包](/dev/lx-pack) |
 
 ---
 
@@ -203,4 +204,5 @@ node node_modules/typescript/bin/tsc --noEmit
 - 动手改桌面端 → [qt-pc（Windows）](/dev/pc)
 - 动手改移动端 → [qt-uniappx（Android）](/dev/mobile)
 - 写自己的音源包 → [音源包作者指南](/dev/pack-authoring)
+- 把洛雪源脚本打成播放包 → [洛雪脚本打包](/dev/lx-pack)
 - 连接不上、装不上、取不到链 → [问题答疑](/faq)

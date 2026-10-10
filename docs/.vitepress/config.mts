@@ -57,6 +57,7 @@ export default defineConfig({
             { text: "qt-pc（Windows）", link: "/dev/pc" },
             { text: "qt-uniappx（Android）", link: "/dev/mobile" },
             { text: "音源包作者指南", link: "/dev/pack-authoring" },
+            { text: "洛雪脚本打包", link: "/dev/lx-pack" },
           ],
         },
       ],

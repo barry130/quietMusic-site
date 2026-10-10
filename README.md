@@ -36,7 +36,8 @@ docs/
     ├── pc.md                   qt-pc（Windows）
     ├── mobile.md               qt-uniappx（Android）
     ├── source-pack.md          音源包机制
-    └── pack-authoring.md       音源包作者指南
+    ├── pack-authoring.md       音源包作者指南
+    └── lx-pack.md              洛雪（LX）音源脚本打包与使用
 docs/.vitepress/config.mts      站点配置
 .cnb.yml                        CNB 流水线：push main → EdgeOne Makers Webhook（方式 A'）
 edgeone.json                    EdgeOne Git 集成的构建配置（方式 A）
