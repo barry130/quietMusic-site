@@ -139,10 +139,10 @@ export default defineConfig({
         ariaLabel: "CNB",
       },
       {
-        // 安装包 Release 在 CNB 上，这里给 Release 页入口（首页导航里已有三架构直链）。
+        // GitHub 图标指向真正的 GitHub 镜像（代码同样托管在这里，以 CNB 为准）。
         icon: "github",
-        link: "https://cnb.cool/canace/qt-pc/-/releases",
-        ariaLabel: "CNB Release（安装包下载）",
+        link: "https://github.com/barry130",
+        ariaLabel: "GitHub 镜像",
       },
     ],
   },

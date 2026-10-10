@@ -2,7 +2,8 @@
 
 ::: tip 下载地址
 Windows 三架构安装包与 Android APK 均已在 **CNB Release** 上线，
-**直链见下方各段，点击即开始下载**。
+**直链见下方各段，点击即开始下载**。Windows 安装包在 **GitHub** 上同步持有一份
+（写在每行后面，作为备用镜像）；Android APK 目前只在 CNB 提供。
 Android 用户更推荐装好后走**应用内的更新检查**（「我的」→「检查更新」）。
 :::
 
@@ -78,14 +79,17 @@ Android 9+ 默认禁止明文流量，不放行就会直接报 `CLEARTEXT not pe
 ## Windows
 
 安装包托管在 **CNB Release**，点下面的按钮直接下载，不用进 Release 页挑文件。
+GitHub 同步持有同样的文件，作为备用镜像写在每一行后面。
 
-当前版本 **v1.1.1**（对应 `app.config.json` 的 `version.name`）：
+当前版本 **v1.1.2**（对应 `app.config.json` 的 `version.name`）：
 
 | 架构 | 适用机器 | 下载 |
 |---|---|---|
-| **x64** | 绝大多数 64 位 Windows（Intel / AMD） | [下载 x64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_x64-setup.exe) |
-| **ARM64** | ARM 架构 Windows（如骁龙 X 系列笔记本） | [下载 ARM64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_arm64-setup.exe) |
-| **x86** | 32 位老机器（装不了 64 位系统） | [下载 x86 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.1/QuietMusic_1.1.1_x86-setup.exe) |
+| **x64** | 绝大多数 64 位 Windows（Intel / AMD） | [下载 x64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.2/QuietMusic_1.1.2_x64-setup.exe) · [GitHub 镜像](https://github.com/barry130/qt-pc/releases/download/v1.1.2/QuietMusic_1.1.2_x64-setup.exe) |
+| **ARM64** | ARM 架构 Windows（如骁龙 X 系列笔记本） | [下载 ARM64 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.2/QuietMusic_1.1.2_arm64-setup.exe) · [GitHub 镜像](https://github.com/barry130/qt-pc/releases/download/v1.1.2/QuietMusic_1.1.2_arm64-setup.exe) |
+| **x86** | 32 位老机器（装不了 64 位系统） | [下载 x86 安装包](https://cnb.cool/canace/qt-pc/-/releases/download/v1.1.2/QuietMusic_1.1.2_x86-setup.exe) · [GitHub 镜像](https://github.com/barry130/qt-pc/releases/download/v1.1.2/QuietMusic_1.1.2_x86-setup.exe) |
+
+同名 `.exe.sig` 在两边也都有，任意一处都能取。
 
 ::: tip 怎么确认自己的架构
 `Win + R` → 输入 `msinfo32` → 看「系统类型」一行：
@@ -96,8 +100,10 @@ Android 9+ 默认禁止明文流量，不放行就会直接报 `CLEARTEXT not pe
 :::
 
 ::: details 找不到合适版本 / 想看全部文件
-去 [qt-pc 的 CNB Release 页](https://cnb.cool/canace/qt-pc/-/releases)，
-或看 [qt-pc 仓库](https://cnb.cool/canace/qt-pc)的构建记录。
+去 [qt-pc 的 CNB Release 页](https://cnb.cool/canace/qt-pc/-/releases)
+（备用：[GitHub Release 页](https://github.com/barry130/qt-pc/releases/tag/v1.1.2)），
+或看 [qt-pc 仓库](https://cnb.cool/canace/qt-pc)
+（备用：[GitHub](https://github.com/barry130/qt-pc)）的构建记录。
 每个安装包旁边都有同名 `.exe.sig`（88 字节）——**应用内更新强制验签**，
 自己手动更新时要把 `.exe` 与 `.exe.sig` 放同一目录。
 :::

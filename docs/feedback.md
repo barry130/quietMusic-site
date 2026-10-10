@@ -1,7 +1,8 @@
 # 反馈与贡献
 
 轻听是开源项目，**代码托管在 CNB**（[cnb.cool/canace](https://cnb.cool/canace)），
-Issue 与 Pull Request 都在这里提。
+Issue 与 Pull Request 都在这里提。同一份代码在 **GitHub** 上有镜像
+（[github.com/barry130](https://github.com/barry130)），CNB 为主。
 
 ::: tip 最快的通道
 只是遇到问题、想吐槽或者提建议？用**应用内的「意见反馈」**就够了——
@@ -13,12 +14,12 @@ Issue 与 Pull Request 都在这里提。
 
 ## 仓库入口
 
-| 仓库 | CNB |
-|---|---|
-| **qt-uniappx**（Android / iOS 客户端） | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
-| **qt-pc**（Windows 桌面端） | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources-sdk**（音源包公开面：契约 / 宿主 API / 指南 / 示例） | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
-| **quietMusic-site**（本站） | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) |
+| 仓库 | CNB（主） | GitHub（镜像） |
+|---|---|---|
+| **qt-uniappx**（Android / iOS 客户端） | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) | [github.com/barry130/qt-uniappx](https://github.com/barry130/qt-uniappx) |
+| **qt-pc**（Windows 桌面端） | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) | [github.com/barry130/qt-pc](https://github.com/barry130/qt-pc) |
+| **qt-sources-sdk**（音源包公开面：契约 / 宿主 API / 指南 / 示例） | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) | [github.com/barry130/qt-sources-sdk](https://github.com/barry130/qt-sources-sdk) |
+| **quietMusic-site**（本站） | [cnb.cool/canace/quietMusic-site](https://cnb.cool/canace/quietMusic-site) | [github.com/barry130/quietMusic-site](https://github.com/barry130/quietMusic-site) |
 
 ---
 
@@ -29,10 +30,10 @@ Issue 与 Pull Request 都在这里提。
 
 | 仓库 | Issues |
 |---|---|
-| **qt-uniappx** | [Issues](https://cnb.cool/canace/qt-uniappx/-/issues) |
-| **qt-pc** | [Issues](https://cnb.cool/canace/qt-pc/-/issues) |
-| **qt-sources-sdk** | [Issues](https://cnb.cool/canace/qt-sources-sdk/-/issues) |
-| **quietMusic-site** | [Issues](https://cnb.cool/canace/quietMusic-site/-/issues) |
+| **qt-uniappx** | [CNB](https://cnb.cool/canace/qt-uniappx/-/issues) · [GitHub](https://github.com/barry130/qt-uniappx/issues) |
+| **qt-pc** | [CNB](https://cnb.cool/canace/qt-pc/-/issues) · [GitHub](https://github.com/barry130/qt-pc/issues) |
+| **qt-sources-sdk** | [CNB](https://cnb.cool/canace/qt-sources-sdk/-/issues) · [GitHub](https://github.com/barry130/qt-sources-sdk/issues) |
+| **quietMusic-site** | [CNB](https://cnb.cool/canace/quietMusic-site/-/issues) · [GitHub](https://github.com/barry130/quietMusic-site/issues) |
 
 不知道该提到哪个仓库？**Android 端的问题 → qt-uniappx，Windows 端的问题 → qt-pc**，
 不确定就随便挑一个，我们会移动它。
@@ -68,10 +69,16 @@ Issue 与 Pull Request 都在这里提。
 
 | 仓库 | Pull requests |
 |---|---|
-| **qt-uniappx** | [Pull requests](https://cnb.cool/canace/qt-uniappx/-/pulls) |
-| **qt-pc** | [Pull requests](https://cnb.cool/canace/qt-pc/-/pulls) |
-| **qt-sources-sdk** | [Pull requests](https://cnb.cool/canace/qt-sources-sdk/-/pulls) |
-| **quietMusic-site** | [Pull requests](https://cnb.cool/canace/quietMusic-site/-/pulls) |
+| **qt-uniappx** | [CNB](https://cnb.cool/canace/qt-uniappx/-/pulls) · [GitHub](https://github.com/barry130/qt-uniappx/pulls) |
+| **qt-pc** | [CNB](https://cnb.cool/canace/qt-pc/-/pulls) · [GitHub](https://github.com/barry130/qt-pc/pulls) |
+| **qt-sources-sdk** | [CNB](https://cnb.cool/canace/qt-sources-sdk/-/pulls) · [GitHub](https://github.com/barry130/qt-sources-sdk/pulls) |
+| **quietMusic-site** | [CNB](https://cnb.cool/canace/quietMusic-site/-/pulls) · [GitHub](https://github.com/barry130/quietMusic-site/pulls) |
+
+::: warning PR 请往 CNB 提
+两个远端的代码一致，但**只有 CNB 上的 PR 会被处理**——GitHub 那份是镜像，
+在那边提的 PR 我们看不到。（GitHub 页面上的 Pull requests / Issues 只是方便浏览，
+真正要提交请走 CNB。）
+:::
 
 ### 动手之前
 
@@ -104,7 +111,8 @@ Issue 与 Pull Request 都在这里提。
 
 ## 文档与站点
 
-本站源码在 [quietMusic-site](https://cnb.cool/canace/quietMusic-site)。
+本站源码在 [quietMusic-site](https://cnb.cool/canace/quietMusic-site)
+（GitHub 镜像：[barry130/quietMusic-site](https://github.com/barry130/quietMusic-site)）。
 发现错别字、过时描述、不准确的说明，直接提 Issue 或者改一版 PR 都很欢迎——
 每页右上角有「在 CNB 上编辑此页」。
 

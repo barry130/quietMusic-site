@@ -127,9 +127,10 @@ git remote add origin https://github.com/barry130/quietMusic-site.git
 git remote set-url --add --push origin https://cnb.cool/canace/quietMusic-site.git
 ```
 
-一次 `git push origin main` 会同时推到两个远端。**站内所有对外链接（下载直链、源码、
-提交反馈）都指向 CNB**，GitHub 这条仅作为备份远端。GitHub 在本机需要走代理、
-CNB 需要直连，可以按远端单独配：
+一次 `git push origin main` 会同时推到两个远端。CNB 是**主**，GitHub 是同步镜像：
+站内的仓库、文件、Issue / PR 链接默认给 CNB，**并同时给出 GitHub 镜像**；
+Windows 安装包在两边 Release 上各有一份（同一组文件），Android APK 目前只在 CNB 提供。
+GitHub 在本机需要走代理、CNB 需要直连，可以按远端单独配：
 
 ```bash
 git config --local remote.origin.proxy socks5h://127.0.0.1:10808
@@ -159,8 +160,8 @@ CNB 侧流水线记录：仓库 → **Events** 标签页。`notify` 阶段变绿
 
 | 仓库 | 内容 |
 |---|---|
-| [qt-uniappx](https://cnb.cool/canace/qt-uniappx) | Android / iOS 客户端 |
-| [qt-pc](https://cnb.cool/canace/qt-pc) | Windows 桌面端 |
+| [qt-uniappx](https://cnb.cool/canace/qt-uniappx) | Android / iOS 客户端（GitHub 镜像：[barry130/qt-uniappx](https://github.com/barry130/qt-uniappx)） |
+| [qt-pc](https://cnb.cool/canace/qt-pc) | Windows 桌面端（GitHub 镜像：[barry130/qt-pc](https://github.com/barry130/qt-pc)） |
 
 ## 许可
 

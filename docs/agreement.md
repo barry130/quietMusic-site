@@ -30,17 +30,17 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 
 ## 2. 软件许可
 
-本软件的客户端源代码开源。代码托管在 **CNB**（内容与 GitHub 镜像一致）；
-站内所有链接（下载、源码、提交反馈）一律指向 CNB。
+本软件的客户端源代码开源。代码托管在 **CNB**（内容在 GitHub 同步镜像一份，
+但**以 CNB 为准**）；站内链接默认指向 CNB，需要时 GitHub 镜像一并给出。
 注意**各仓库的授权形态不完全相同**：
 
 | 仓库 | 内容 | 许可 |
 |---|---|---|
-| qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/master/LICENSE-SUPPLEMENTARY.md) |
-| qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-pc/-/blob/master/LICENSE-SUPPLEMENTARY.md) |
-| qt-sources-sdk | 音源包开发的公开面：类型契约、宿主 API、作者指南、示例包 | [MIT](https://cnb.cool/canace/qt-sources-sdk/-/blob/master/LICENSE) |
+| qt-uniappx | Android / iOS 客户端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/master/LICENSE-SUPPLEMENTARY.md)（[GitHub 镜像](https://github.com/barry130/qt-uniappx/blob/master/LICENSE-SUPPLEMENTARY.md)） |
+| qt-pc | Windows 桌面端 | Apache-2.0 + [补充条款](https://cnb.cool/canace/qt-pc/-/blob/master/LICENSE-SUPPLEMENTARY.md)（[GitHub 镜像](https://github.com/barry130/qt-pc/blob/master/LICENSE-SUPPLEMENTARY.md)） |
+| qt-sources-sdk | 音源包开发的公开面：类型契约、宿主 API、作者指南、示例包 | [MIT](https://cnb.cool/canace/qt-sources-sdk/-/blob/master/LICENSE)（[GitHub 镜像](https://github.com/barry130/qt-sources-sdk/blob/master/LICENSE)） |
 
-仓库入口：[CNB](https://cnb.cool/canace)，
+仓库入口：[CNB](https://cnb.cool/canace) · [GitHub](https://github.com/barry130)，
 完整列表与反馈渠道见[反馈与贡献](/feedback)。
 
 两个客户端仓库以 **Apache-2.0** 发布，并各自附带一份**补充条款**（音源包与内容边界）。
@@ -157,11 +157,12 @@ ogg / m4a / aac）、歌词（内嵌与同名 `.lrc`）、播放队列与播放�
 ## 10. 联系方式
 
 - 应用内「意见反馈」
-- [反馈与贡献](/feedback) —— CNB 上的 Issue / PR 入口
+- [反馈与贡献](/feedback) —— CNB 与 GitHub 两处的 Issue / PR 入口
 
 ---
 
 ## 附：与开源许可证的关系
 
 本文件是客户端仓库所附[补充条款](https://cnb.cool/canace/qt-uniappx/-/blob/master/LICENSE-SUPPLEMENTARY.md)
+（[GitHub 镜像](https://github.com/barry130/qt-uniappx/blob/master/LICENSE-SUPPLEMENTARY.md)）
 在站点上的表述，与 Apache-2.0 许可证共同生效；如冲突，以补充条款为准。

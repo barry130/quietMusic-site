@@ -6,15 +6,15 @@
 
 ## 仓库与边界
 
-代码托管在 **CNB**（[反馈与贡献](/feedback)里有完整入口）。
+代码托管在 **CNB**（[反馈与贡献](/feedback)里有完整入口），GitHub 上是同步镜像。
 音源包的取链实现不在客户端仓库里；播放包作者需要的类型契约、宿主 API 与示例包
 单独拆在接口仓 `qt-sources-sdk`。
 
 | 仓库 | 面向平台 | 技术栈 | 产物 | 仓库 |
 |---|---|---|---|---|
-| **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [cnb.cool/canace/qt-uniappx](https://cnb.cool/canace/qt-uniappx) |
-| **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [cnb.cool/canace/qt-pc](https://cnb.cool/canace/qt-pc) |
-| **qt-sources-sdk** | 平台无关 | 纯类型 + 文档，MIT | `contract.ts`、`host-api.ts`、作者指南、示例包 | [cnb.cool/canace/qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) |
+| **qt-uniappx** | Android / iOS | UniAppX：`.uvue` 页面 + UTS 服务 + Vapor 渲染，Vue 3 组合式 API，Pinia 管全局状态 | Android 安装包 / iOS 包 | [CNB](https://cnb.cool/canace/qt-uniappx) · [GitHub](https://github.com/barry130/qt-uniappx) |
+| **qt-pc** | Windows | Tauri 2（Rust 后端 + WebView2 前端）+ React 19 + Rust 2021 | NSIS 安装包 `QuietMusic_<版本>_x64-setup.exe` | [CNB](https://cnb.cool/canace/qt-pc) · [GitHub](https://github.com/barry130/qt-pc) |
+| **qt-sources-sdk** | 平台无关 | 纯类型 + 文档，MIT | `contract.ts`、`host-api.ts`、作者指南、示例包 | [CNB](https://cnb.cool/canace/qt-sources-sdk) · [GitHub](https://github.com/barry130/qt-sources-sdk) |
 
 播放包作者真正需要的是 `qt-sources-sdk`——类型契约、宿主 API、
 [作者指南](/dev/pack-authoring)与示例包。官方包的取链实现不在任何公开仓库里，

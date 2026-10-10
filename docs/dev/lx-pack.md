@@ -58,10 +58,12 @@ node scripts/build-lx-pack.mjs "我的洛雪源.js" --id my-lx-source
 
 只需要 **Node.js ≥ 20**（用来跑打包脚本，跟客户端本身无关）。
 
-拿到打包器 —— 在 [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) 仓库里：
+拿到打包器 —— 在 [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) 仓库里
+（GitHub 镜像：[barry130/qt-sources-sdk](https://github.com/barry130/qt-sources-sdk)）：
 
 ```bash
 git clone https://cnb.cool/canace/qt-sources-sdk.git
+# 或 GitHub 镜像：git clone https://github.com/barry130/qt-sources-sdk.git
 cd qt-sources-sdk
 ```
 
@@ -275,4 +277,5 @@ node scripts/test-lx-packer.mjs     # 或 pnpm test:lx
 - [如何设置音源](/source-setup) —— 装包、换源、调音质、排错
 - [音源包机制](/dev/source-pack) —— 包模型、签名、安全扫描、生命周期
 - [音源包作者指南](/dev/pack-authoring) —— 从零手写一个播放包（不走洛雪协议时）
-- [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk) —— 打包器与运行时桥的源码
+- [qt-sources-sdk](https://cnb.cool/canace/qt-sources-sdk)（GitHub 镜像
+  [barry130/qt-sources-sdk](https://github.com/barry130/qt-sources-sdk)）—— 打包器与运行时桥的源码

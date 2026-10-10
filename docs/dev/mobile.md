@@ -1,7 +1,8 @@
 # qt-uniappx（Android 移动端）
 
 [UniAppX](https://uniapp.dcloud.net.cn/uni-app-x/)（UVue + UTS + Vapor 编译模式）写的音乐应用，
-一套代码同时出 Android 与 iOS 包。仓库 <https://cnb.cool/canace/qt-uniappx>，包名
+一套代码同时出 Android 与 iOS 包。仓库 <https://cnb.cool/canace/qt-uniappx>
+（GitHub 镜像：<https://github.com/barry130/qt-uniappx>），包名
 `com.qt.app`，appid `__UNI__7AC1B12`。
 
 ## 环境要求
